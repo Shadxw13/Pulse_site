@@ -42,3 +42,7 @@ next-env.d.ts
 
 # maquettes de référence (fournies à part)
 /design-reference/
+
+# Notes internes, hors dépôt public
+/PROMPT-CLAUDE-CODE.md
+/pulse-site-reference.zip
