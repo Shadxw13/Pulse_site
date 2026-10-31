@@ -24,7 +24,9 @@ export function HudConfigurator() {
           <div className="flex flex-col gap-4">
             <Eyebrow>Interface</Eyebrow>
             <SplitHeading className="h2">Aux couleurs de votre serveur.</SplitHeading>
-            <p className="lead !text-base">Couleur, arrondis et police du HUD se choisissent dans l’espace client. Essayez ici.</p>
+            <p className="lead !text-base">
+              Couleur, arrondis et police du HUD se choisissent dans l’espace client. Essayez ici.
+            </p>
           </div>
           <div className="flex flex-col gap-2.5">
             <span className="text-sm font-semibold">
@@ -40,7 +42,9 @@ export function HudConfigurator() {
                   onClick={() => setAcc(i)}
                   className={cn(
                     'size-9 cursor-pointer rounded-full border-2 border-white p-0 transition-[box-shadow,transform] duration-200 hover:scale-105',
-                    i === acc ? 'shadow-[0_0_0_2px_var(--color-ink)]' : 'shadow-[0_0_0_1px_var(--color-line-2)]',
+                    i === acc
+                      ? 'shadow-[0_0_0_2px_var(--color-ink)]'
+                      : 'shadow-[0_0_0_1px_var(--color-line-2)]',
                   )}
                   style={{ background: x.color }}
                 />
@@ -74,7 +78,9 @@ export function HudConfigurator() {
                   style={{ fontFamily: x.family }}
                   className={cn(
                     'h-10 cursor-pointer rounded-full border px-3.5 text-sm transition-colors',
-                    i === font ? 'border-ink bg-ink text-white' : 'border-line-2 bg-surf text-ink-2 hover:border-ink',
+                    i === font
+                      ? 'border-ink bg-ink text-white'
+                      : 'border-line-2 bg-surf text-ink-2 hover:border-ink',
                   )}
                 >
                   {x.name}
@@ -90,7 +96,11 @@ export function HudConfigurator() {
           className="relative min-h-[440px] overflow-hidden rounded-[22px]"
           style={{ background: hudScene.bg, fontFamily: ff }}
         >
-          <svg viewBox="0 0 600 440" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full opacity-50">
+          <svg
+            viewBox="0 0 600 440"
+            preserveAspectRatio="xMidYMid slice"
+            className="absolute inset-0 h-full w-full opacity-50"
+          >
             <g fill={hudScene.building}>
               <rect x="20" y="180" width="70" height="260" />
               <rect x="100" y="120" width="90" height="320" />
@@ -98,14 +108,25 @@ export function HudConfigurator() {
               <rect x="510" y="200" width="70" height="240" />
             </g>
           </svg>
-          <div className="absolute top-6 left-6 w-[250px] max-w-[calc(100%-48px)] overflow-hidden text-dark-text" style={{ borderRadius: rad, background: hudScene.panel, transition: ease }}>
-            <div className="px-4 py-3.5 text-base font-bold text-white" style={{ background: a.color, transition: ease }}>
+          <div
+            className="absolute top-6 left-6 w-[250px] max-w-[calc(100%-48px)] overflow-hidden text-dark-text"
+            style={{ borderRadius: rad, background: hudScene.panel, transition: ease }}
+          >
+            <div
+              className="px-4 py-3.5 text-base font-bold text-white"
+              style={{ background: a.color, transition: ease }}
+            >
               Los Santos Customs
             </div>
             <div className="flex flex-col gap-1 p-2 text-sm">
               <div
                 className="flex justify-between px-3 py-2.5"
-                style={{ borderRadius: r2, background: hexA(a.lite, 0.14), boxShadow: `inset 3px 0 0 ${a.color}`, transition: ease }}
+                style={{
+                  borderRadius: r2,
+                  background: hexA(a.lite, 0.14),
+                  boxShadow: `inset 3px 0 0 ${a.color}`,
+                  transition: ease,
+                }}
               >
                 <span>Réparation</span>
                 <span>850 $</span>
@@ -120,7 +141,12 @@ export function HudConfigurator() {
           </div>
           <div
             className="absolute top-6 right-6 hidden w-[240px] px-3.5 py-3 text-[13px] text-dark-text sm:block"
-            style={{ borderRadius: rad, background: hudScene.panel, boxShadow: `inset 3px 0 0 ${a.color}`, transition: ease }}
+            style={{
+              borderRadius: rad,
+              background: hudScene.panel,
+              boxShadow: `inset 3px 0 0 ${a.color}`,
+              transition: ease,
+            }}
           >
             <div className="font-bold">Facture reçue</div>
             <div className="text-dark-muted">Los Santos Customs · 850 $</div>
@@ -139,16 +165,48 @@ export function HudConfigurator() {
           </div>
           <div className="absolute right-6 bottom-6 flex items-end gap-3.5 text-white">
             <svg width="92" height="92" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="40" fill="none" stroke={hudScene.ring} strokeWidth="8" strokeDasharray="188 252" transform="rotate(135 50 50)" strokeLinecap="round" />
-              <circle cx="50" cy="50" r="40" fill="none" stroke={a.lite} strokeWidth="8" strokeDasharray="120 252" transform="rotate(135 50 50)" strokeLinecap="round" style={{ transition: 'stroke .35s ease' }} />
-              <text x="50" y="56" textAnchor="middle" className="fill-white" fontSize="24" fontWeight="700" style={{ fontFamily: ff }}>
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="none"
+                stroke={hudScene.ring}
+                strokeWidth="8"
+                strokeDasharray="188 252"
+                transform="rotate(135 50 50)"
+                strokeLinecap="round"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="none"
+                stroke={a.lite}
+                strokeWidth="8"
+                strokeDasharray="120 252"
+                transform="rotate(135 50 50)"
+                strokeLinecap="round"
+                style={{ transition: 'stroke .35s ease' }}
+              />
+              <text
+                x="50"
+                y="56"
+                textAnchor="middle"
+                className="fill-white"
+                fontSize="24"
+                fontWeight="700"
+                style={{ fontFamily: ff }}
+              >
                 87
               </text>
             </svg>
           </div>
           <div className="absolute bottom-6 left-6 flex w-[180px] flex-col gap-1.5">
             <div className="h-1.5" style={{ borderRadius: r2, background: hudScene.track }}>
-              <div className="h-full w-[82%]" style={{ borderRadius: r2, background: a.lite, transition: ease }} />
+              <div
+                className="h-full w-[82%]"
+                style={{ borderRadius: r2, background: a.lite, transition: ease }}
+              />
             </div>
             <div className="h-1.5" style={{ borderRadius: r2, background: hudScene.track }}>
               <div className="h-full w-[56%]" style={{ borderRadius: r2, background: hudScene.bar2 }} />

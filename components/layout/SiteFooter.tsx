@@ -20,7 +20,12 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 export function SiteFooter() {
   return (
     <footer className="relative overflow-hidden bg-bg-2 text-ink">
-      <svg aria-hidden="true" viewBox="0 0 1440 60" preserveAspectRatio="none" className="block h-[60px] w-full">
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 1440 60"
+        preserveAspectRatio="none"
+        className="block h-[60px] w-full"
+      >
         <path d={FOOTER_BASE} fill="none" className="stroke-line-3" strokeWidth={1.5} />
         <DrawLine
           d={FOOTER_BEAT}
@@ -28,7 +33,7 @@ export function SiteFooter() {
           className="stroke-red"
           strokeWidth={1.8}
           strokeLinejoin="round"
-         
+
           duration={1.1}
           start="top 98%"
         />
@@ -56,7 +61,17 @@ export function SiteFooter() {
             href={site.panel.admin}
             className="inline-flex min-h-8 items-center gap-1.5 text-[12.5px] text-muted-2 no-underline hover:text-ink"
           >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
               <path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z" />
             </svg>
             Administration

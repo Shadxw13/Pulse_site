@@ -31,7 +31,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="fr" className={fontVariables} suppressHydrationWarning>
       <head>
-        <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: introBootScript }} />
+        <script
+          nonce={nonce}
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: introBootScript }}
+        />
       </head>
       <body>
         <MotionProvider nonce={nonce}>

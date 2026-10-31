@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, m } from 'motion/react';
 import { useState } from 'react';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitHeading } from '@/components/motion/SplitHeading';
@@ -40,13 +40,21 @@ const MODES = [
 
 const TILE_ICONS = {
   Serveur: (
-    <svg viewBox="0 0 100 100" className="absolute top-[18px] -right-3.5 w-[90px] opacity-[.22]" aria-hidden="true">
+    <svg
+      viewBox="0 0 100 100"
+      className="absolute top-[18px] -right-3.5 w-[90px] opacity-[.22]"
+      aria-hidden="true"
+    >
       <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="10" />
       <circle cx="50" cy="50" r="14" fill="currentColor" />
     </svg>
   ),
   Staff: (
-    <svg viewBox="0 0 100 100" className="absolute top-[18px] -right-2.5 w-[86px] opacity-[.22]" aria-hidden="true">
+    <svg
+      viewBox="0 0 100 100"
+      className="absolute top-[18px] -right-2.5 w-[86px] opacity-[.22]"
+      aria-hidden="true"
+    >
       <circle cx="50" cy="34" r="20" fill="currentColor" />
       <path d="M14 96 C14 66 86 66 86 96Z" fill="currentColor" />
     </svg>
@@ -58,7 +66,11 @@ const TILE_ICONS = {
     </svg>
   ),
   Illégal: (
-    <svg viewBox="0 0 100 100" className="absolute top-[18px] -right-2.5 w-[86px] opacity-[.22]" aria-hidden="true">
+    <svg
+      viewBox="0 0 100 100"
+      className="absolute top-[18px] -right-2.5 w-[86px] opacity-[.22]"
+      aria-hidden="true"
+    >
       <path d="M50 8 L88 24 V52 C88 74 70 90 50 96 C30 90 12 74 12 52 V24Z" fill="currentColor" />
     </svg>
   ),
@@ -73,7 +85,7 @@ const TABLET_TILES: Array<[keyof typeof TILE_ICONS, readonly [string, string], s
 
 function TabletScreen() {
   return (
-    <div className="flex h-full flex-col gap-3.5 bg-[linear-gradient(180deg,#1C1B21,#141317)] p-[18px]">
+    <div className="flex h-full flex-col gap-3.5 bg-linear-180 from-dark-top to-dark-bottom p-[18px]">
       <div className="flex items-center justify-between text-dark-text">
         <span className="display flex items-center gap-2 text-base font-bold">
           <LogoMark width={22} height={13} onDark />
@@ -102,10 +114,10 @@ function BrowserScreen() {
   ];
   return (
     <div className="flex h-full flex-col bg-dark-deep">
-      <div className="flex h-[38px] items-center gap-2.5 border-b border-dark-line bg-[#1A191E] px-3.5">
+      <div className="flex h-[38px] items-center gap-2.5 border-b border-dark-line bg-dark-bar px-3.5">
         <span className="flex gap-1.5">
           {[0, 1, 2].map((k) => (
-            <i key={k} className="size-[9px] rounded-full bg-[#3A383F]" />
+            <i key={k} className="size-[9px] rounded-full bg-dark-dot" />
           ))}
         </span>
         <span className="mx-auto flex h-6 max-w-[300px] flex-1 items-center justify-center rounded-md bg-dark-deep text-[11.5px] text-dark-muted">
@@ -115,7 +127,10 @@ function BrowserScreen() {
       <div className="grid min-h-0 flex-1 grid-cols-[minmax(0,140px)_minmax(0,1fr)] sm:grid-cols-[180px_minmax(0,1fr)]">
         <div className="flex flex-col gap-1 border-r border-dark-line px-2.5 py-3.5 text-[12.5px] text-dark-muted">
           {['Accueil', 'Joueurs', 'Économie', 'Territoires', 'Rôles', 'Licence'].map((l) => (
-            <span key={l} className={cn('px-2.5 py-[7px]', l === 'Économie' && 'rounded-[7px] bg-dark-2 text-dark-text')}>
+            <span
+              key={l}
+              className={cn('px-2.5 py-[7px]', l === 'Économie' && 'rounded-[7px] bg-dark-2 text-dark-text')}
+            >
               {l}
             </span>
           ))}
@@ -133,7 +148,9 @@ function BrowserScreen() {
             </div>
           ))}
           <div className="flex justify-end">
-            <span className="rounded-[7px] bg-red px-3 py-[7px] text-xs font-semibold text-white">Enregistrer</span>
+            <span className="rounded-[7px] bg-red px-3 py-[7px] text-xs font-semibold text-white">
+              Enregistrer
+            </span>
           </div>
         </div>
       </div>
@@ -159,13 +176,19 @@ export function ManageSwitch() {
       <div className="wrap flex flex-col items-center gap-8">
         <Reveal className="flex flex-col items-center gap-4 text-center">
           <Eyebrow>Gestion</Eyebrow>
-          <SplitHeading className="h2 max-w-[18ch]">Gérez votre serveur en jeu ou depuis votre navigateur.</SplitHeading>
+          <SplitHeading className="h2 max-w-[18ch]">
+            Gérez votre serveur en jeu ou depuis votre navigateur.
+          </SplitHeading>
         </Reveal>
         <Reveal>
-          <div role="group" aria-label="Choisir l’outil" className="inline-flex gap-1 rounded-full bg-sunk p-1">
-            {MODES.map((m, i) => (
+          <div
+            role="group"
+            aria-label="Choisir l’outil"
+            className="inline-flex gap-1 rounded-full bg-sunk p-1"
+          >
+            {MODES.map((md, i) => (
               <button
-                key={m.label}
+                key={md.label}
                 type="button"
                 aria-pressed={mode === i}
                 onClick={() => setMode(i as 0 | 1)}
@@ -175,13 +198,13 @@ export function ManageSwitch() {
                 )}
               >
                 {mode === i && (
-                  <motion.span
+                  <m.span
                     layoutId="seg-pill"
                     className="absolute inset-0 rounded-full bg-ink"
                     transition={{ duration: reduce ? 0 : DUR.fast, ease: EASE }}
                   />
                 )}
-                <span className="relative">{m.label}</span>
+                <span className="relative">{md.label}</span>
               </button>
             ))}
           </div>
@@ -189,11 +212,11 @@ export function ManageSwitch() {
 
         <div className="grid w-full grid-cols-1 items-center gap-[clamp(28px,4vw,56px)] md:grid-cols-[minmax(0,1.6fr)_minmax(0,0.8fr)]">
           <div className="flex min-h-[430px] items-center justify-center">
-            <motion.div
+            <m.div
               layout
               transition={t}
               aria-hidden="true"
-              className="relative mx-auto overflow-hidden bg-dark-edge shadow-[0_40px_80px_rgba(22,21,26,.22)]"
+              className="relative mx-auto overflow-hidden bg-dark-edge shadow-device"
               style={{
                 width: mobile ? '100%' : tablet ? 560 : '100%',
                 maxWidth: '100%',
@@ -202,9 +225,14 @@ export function ManageSwitch() {
                 padding: tablet ? 12 : 1,
               }}
             >
-              <motion.div layout transition={t} className="relative h-full overflow-hidden" style={{ borderRadius: tablet ? 18 : 13 }}>
+              <m.div
+                layout
+                transition={t}
+                className="relative h-full overflow-hidden"
+                style={{ borderRadius: tablet ? 18 : 13 }}
+              >
                 <AnimatePresence initial={false}>
-                  <motion.div
+                  <m.div
                     key={mode}
                     className="absolute inset-0"
                     initial={{ opacity: 0 }}
@@ -213,14 +241,14 @@ export function ManageSwitch() {
                     transition={{ duration: reduce ? DUR.reduced : 0.45, ease: 'easeOut' }}
                   >
                     {tablet ? <TabletScreen /> : <BrowserScreen />}
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </div>
 
           <AnimatePresence mode="wait" initial={false}>
-            <motion.div
+            <m.div
               key={mode}
               className="flex flex-col gap-4"
               initial={{ opacity: 0, y: reduce ? 0 : 10 }}
@@ -242,7 +270,7 @@ export function ManageSwitch() {
                   {M.cta}
                 </Button>
               </div>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
       </div>

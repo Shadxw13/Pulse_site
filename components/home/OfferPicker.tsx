@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, m } from 'motion/react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { CountUp } from '@/components/motion/CountUp';
@@ -18,7 +18,18 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 
 function Check() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="mt-1 flex-none text-ok">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="mt-1 flex-none text-ok"
+    >
       <path d="M5 12.5l4.5 4.5L19 7" />
     </svg>
   );
@@ -44,7 +55,11 @@ export function OfferPicker() {
         </Reveal>
 
         <Reveal className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2">
-          <div className="flex flex-col overflow-hidden rounded-[20px] border border-line bg-bg" role="group" aria-label="Choisir une offre">
+          <div
+            className="flex flex-col overflow-hidden rounded-[20px] border border-line bg-bg"
+            role="group"
+            aria-label="Choisir une offre"
+          >
             {offers.map((x) => {
               const on = x.id === id;
               return (
@@ -55,7 +70,9 @@ export function OfferPicker() {
                   onClick={() => setId(x.id)}
                   className={cn(
                     'flex w-full flex-1 cursor-pointer items-center justify-between gap-4 border-0 border-b border-line px-[22px] py-5 text-left text-ink transition-[background-color,box-shadow] duration-200 last:border-b-0',
-                    on ? 'bg-surf shadow-[inset_3px_0_0_var(--color-red)]' : 'bg-transparent hover:bg-ink/[.03]',
+                    on
+                      ? 'bg-surf shadow-[inset_3px_0_0_var(--color-red)]'
+                      : 'bg-transparent hover:bg-ink/[.03]',
                   )}
                 >
                   <span className="flex flex-col gap-1">
@@ -66,7 +83,11 @@ export function OfferPicker() {
                     <span className="text-sm text-muted">{x.short}</span>
                   </span>
                   <span className="text-right">
-                    <CountUp value={x.price} suffix=" €" className="display text-[30px] leading-none font-bold tracking-[-0.03em]" />
+                    <CountUp
+                      value={x.price}
+                      suffix=" €"
+                      className="display text-[30px] leading-none font-bold tracking-[-0.03em]"
+                    />
                     <br />
                     <span className="text-[13px] text-muted">{x.per}</span>
                   </span>
@@ -83,7 +104,7 @@ export function OfferPicker() {
               </span>
             </div>
             <AnimatePresence mode="wait" initial={false}>
-              <motion.div
+              <m.div
                 key={o.id}
                 className="flex flex-col gap-[18px]"
                 initial={{ opacity: 0, y: reduce ? 0 : 8 }}
@@ -100,7 +121,7 @@ export function OfferPicker() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
             <div className="mt-auto flex flex-wrap items-center gap-2.5">
               <Button variant="red" href="/discord">
@@ -113,7 +134,8 @@ export function OfferPicker() {
           </Spotlight>
         </Reveal>
         <span className="text-[13px] text-muted">
-          Commande par ticket sur Discord. Paiement PayPal validé par l’équipe. TVA non applicable, art. 293 B du CGI.
+          Commande par ticket sur Discord. Paiement PayPal validé par l’équipe. TVA non applicable, art. 293 B
+          du CGI.
         </span>
       </div>
     </section>

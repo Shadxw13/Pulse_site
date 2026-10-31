@@ -76,9 +76,14 @@ export function PerfBand() {
           </p>
         </div>
         <Reveal className="flex flex-col gap-4">
-          <div className="relative h-[120px] overflow-hidden rounded-[14px] border border-dark-line bg-dark-deep" aria-hidden="true">
+          <div
+            className="relative h-[120px] overflow-hidden rounded-[14px] border border-dark-line bg-dark-deep"
+            aria-hidden="true"
+          >
             <PulseLine />
-            <span className="mono absolute top-3 left-4 z-[1] text-[11.5px] text-dark-muted">resmon · serveur de test</span>
+            <span className="mono absolute top-3 left-4 z-[1] text-[11.5px] text-dark-muted">
+              resmon · serveur de test
+            </span>
             <span className="mono absolute top-3 right-4 z-[1] text-xs text-dark-text">
               <ScrambleText text={live} onView={false} duration={450} /> ms
             </span>

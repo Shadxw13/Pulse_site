@@ -43,8 +43,10 @@ export function EveningStory() {
       const st = ScrollTrigger.create({
         trigger: pinBox.current,
         start: 'center center',
-        end: `+=${n * 70}%`,
+        end: () => `+=${Math.round(window.innerHeight * n * 0.7)}`,
+        invalidateOnRefresh: true,
         pin: true,
+        pinSpacing: true, // le parent est en flex : GSAP le désactiverait par défaut
         anticipatePin: 1,
         onUpdate: (self) => {
           const p = self.progress * n;
@@ -58,7 +60,10 @@ export function EveningStory() {
           });
         },
       });
-      trigger.current = { start: st.start, end: st.end };
+      bars.current.forEach((b) => {
+        if (b) b.style.transform = 'scaleX(0)';
+      });
+      trigger.current = st; // start/end restent à jour après un refresh
       setPinned(true);
       setAuto(false);
       return () => {
@@ -77,7 +82,9 @@ export function EveningStory() {
   const pick = (i: number) => {
     if (pinned && trigger.current) {
       const { start, end } = trigger.current;
-      window.scrollTo({ top: start + ((i + 0.5) / moments.length) * (end - start), behavior: 'smooth' });
+      const top = start + ((i + 0.5) / moments.length) * (end - start);
+      if (window.__lenis) window.__lenis.scrollTo(top, { duration: 0.9 });
+      else window.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
       return;
     }
     setAuto(false);
@@ -93,14 +100,22 @@ export function EveningStory() {
         <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div className="flex flex-col gap-3.5">
             <Eyebrow>Côté joueurs</Eyebrow>
-            <SplitHeading className="h2 max-w-[15ch]">Une soirée sur votre serveur, de 18 h à 2 h.</SplitHeading>
+            <SplitHeading className="h2 max-w-[15ch]">
+              Une soirée sur votre serveur, de 18 h à 2 h.
+            </SplitHeading>
           </div>
           <p className="lead max-w-[40ch] !text-[15.5px]">
-            Cinq moments d’une soirée type, avec les écrans que vos joueurs croisent. Tous ont été dessinés pour la base.
+            Cinq moments d’une soirée type, avec les écrans que vos joueurs croisent. Tous ont été dessinés
+            pour la base.
           </p>
         </Reveal>
 
-        <div ref={pinBox} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className="flex flex-col gap-[18px] bg-bg">
+        <div
+          ref={pinBox}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="flex flex-col gap-[18px] bg-bg"
+        >
           <div className="grid grid-cols-[repeat(5,minmax(112px,1fr))] gap-3 overflow-x-auto pb-1.5 md:grid-cols-5 md:overflow-visible md:pb-0">
             {moments.map((mo, i) => {
               const on = i === hour;
@@ -147,7 +162,10 @@ export function EveningStory() {
                   key={`sky-${mo.hour}`}
                   aria-hidden="true"
                   className="absolute inset-0 transition-opacity duration-1000"
-                  style={{ background: `linear-gradient(180deg, ${mo.sky[0]} 0%, ${mo.sky[1]} 100%)`, opacity: i === hour ? 1 : 0 }}
+                  style={{
+                    background: `linear-gradient(180deg, ${mo.sky[0]} 0%, ${mo.sky[1]} 100%)`,
+                    opacity: i === hour ? 1 : 0,
+                  }}
                 />
               ))}
               {moments.map((mo, i) => (

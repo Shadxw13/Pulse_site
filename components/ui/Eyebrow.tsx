@@ -1,7 +1,15 @@
 import { cn } from '@/lib/cn';
 
 /** Surtitre : trait rouge 18×2 px puis libellé en muted 13,5 px. */
-export function Eyebrow({ children, onDark = false, className }: { children: React.ReactNode; onDark?: boolean; className?: string }) {
+export function Eyebrow({
+  children,
+  onDark = false,
+  className,
+}: {
+  children: React.ReactNode;
+  onDark?: boolean;
+  className?: string;
+}) {
   return (
     <span
       className={cn(

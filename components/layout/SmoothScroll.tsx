@@ -6,6 +6,13 @@ import type Lenis from 'lenis';
 import { loadGsap } from '@/lib/gsap';
 import { isMobileViewport, prefersReducedMotion } from '@/lib/useReducedMotion';
 
+declare global {
+  interface Window {
+    /** Instance Lenis active (desktop), pour les défilements programmés. */
+    __lenis?: Lenis;
+  }
+}
+
 /**
  * Défilement fluide Lenis synchronisé avec ScrollTrigger (desktop uniquement, jamais en reduced-motion).
  * Lenis et GSAP sont chargés dynamiquement.
@@ -22,6 +29,7 @@ export function SmoothScroll() {
       if (cancelled) return;
       const lenis = new LenisCtor({ autoRaf: false, anchors: { offset: -80 }, lerp: 0.12 });
       lenisRef.current = lenis;
+      window.__lenis = lenis;
       lenis.on('scroll', ScrollTrigger.update);
       const raf = (t: number) => lenis.raf(t * 1000);
       gsap.ticker.add(raf);
@@ -30,6 +38,7 @@ export function SmoothScroll() {
         gsap.ticker.remove(raf);
         lenis.destroy();
         lenisRef.current = null;
+        window.__lenis = undefined;
       };
     });
     return () => {

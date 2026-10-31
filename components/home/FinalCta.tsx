@@ -19,16 +19,20 @@ function Row({ items }: { items: string[] }) {
   );
 }
 
-/** Deux rangées de systèmes qui défilent en sens inverse, et une carte centrale qui les chevauche. */
+/**
+ * Le texte géant est purement décoratif (aria-hidden) : il est peint via background-clip,
+ * ce qui garde la teinte pâle des maquettes.
+ *
+ * Deux rangées de systèmes qui défilent en sens inverse, et une carte centrale qui les chevauche. */
 export function FinalCta() {
   const row = 'display text-[clamp(40px,6vw,84px)] leading-[1.1] font-bold tracking-[-0.04em]';
   return (
     <section className="relative overflow-hidden pb-[clamp(72px,9vw,120px)]">
       <div aria-hidden="true" className="-mb-10 flex flex-col gap-1">
-        <Marquee speed={42} className={`${row} text-line-3`}>
+        <Marquee speed={42} className={`${row} deco-text bg-line-3`}>
           <Row items={marqueeRowA} />
         </Marquee>
-        <Marquee speed={36} reverse className={`${row} text-line`}>
+        <Marquee speed={36} reverse className={`${row} deco-text bg-line`}>
           <Row items={marqueeRowB} />
         </Marquee>
       </div>
@@ -36,7 +40,9 @@ export function FinalCta() {
         <Reveal className="relative flex w-[min(720px,100%)] flex-col items-center gap-[18px] rounded-[18px] border border-line bg-surf p-[clamp(28px,4vw,48px)] text-center shadow-soft">
           <LogoMark width={52} height={30} />
           <SplitHeading className="h2 max-w-[16ch]">On vous attend sur {site.discord.name}.</SplitHeading>
-          <p className="lead max-w-[44ch] !text-base">Commandes, support et annonces de version : tout se passe sur le Discord.</p>
+          <p className="lead max-w-[44ch] !text-base">
+            Commandes, support et annonces de version : tout se passe sur le Discord.
+          </p>
           <div className="flex flex-wrap justify-center gap-2.5">
             <Button variant="discord" href="/discord">
               Rejoindre le Discord

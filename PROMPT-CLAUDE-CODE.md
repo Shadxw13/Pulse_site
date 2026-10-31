@@ -57,32 +57,34 @@ Les liens internes des maquettes (`Site-Tarifs.dc.html`, etc.) deviennent des ro
 
 Thème **clair uniquement**, aucun mode sombre automatique. Des zones sombres existent volontairement (bandeau performances, cartes « écran de jeu », carte Lifetime) : ce sont des surfaces, pas un thème.
 
-| Jeton | Valeur | Usage |
-|---|---|---|
-| `bg` | `#F5F4F1` | fond de page (gris chaud) |
-| `surf` | `#FFFFFF` | cartes, sections alternées |
-| `sunk` | `#ECEAE5` | pistes, zones enfoncées, segmented control |
-| `line` | `#E3E0DA` | filets |
-| `line-2` | `#D3CFC7` | bordures de boutons et d'inputs |
-| `ink` | `#16151A` | titres, boutons noirs |
-| `ink-2` | `#3E3C43` | texte courant |
-| `muted` | `#67646C` | texte secondaire (contraste 5,3:1 sur `bg`) |
-| `red` | `#C8161D` | **seul accent** : bouton principal, traits, points |
-| `red-hover` | `#A91219` | survol du rouge |
-| `red-soft` / `red-text` | `#FBEAEA` / `#A8121A` | tags rouges |
-| `dark` / `dark-2` / `dark-line` | `#17161B` / `#211F25` / `#2E2C33` | surfaces sombres, interfaces en jeu |
-| `dark-text` / `dark-muted` | `#EEECE8` / `#A3A0A8` | texte sur surfaces sombres |
-| `ok` (sur sombre) / `warn` (sur sombre) | `#6FCF97` / `#E8B04B` | états dans les UI de jeu |
-| `green` (sur clair) | `#1D7A46` | coches |
-| `star` | `#B57F00` | étoiles d'avis |
+| Jeton                                   | Valeur                            | Usage                                              |
+| --------------------------------------- | --------------------------------- | -------------------------------------------------- |
+| `bg`                                    | `#F5F4F1`                         | fond de page (gris chaud)                          |
+| `surf`                                  | `#FFFFFF`                         | cartes, sections alternées                         |
+| `sunk`                                  | `#ECEAE5`                         | pistes, zones enfoncées, segmented control         |
+| `line`                                  | `#E3E0DA`                         | filets                                             |
+| `line-2`                                | `#D3CFC7`                         | bordures de boutons et d'inputs                    |
+| `ink`                                   | `#16151A`                         | titres, boutons noirs                              |
+| `ink-2`                                 | `#3E3C43`                         | texte courant                                      |
+| `muted`                                 | `#67646C`                         | texte secondaire (contraste 5,3:1 sur `bg`)        |
+| `red`                                   | `#C8161D`                         | **seul accent** : bouton principal, traits, points |
+| `red-hover`                             | `#A91219`                         | survol du rouge                                    |
+| `red-soft` / `red-text`                 | `#FBEAEA` / `#A8121A`             | tags rouges                                        |
+| `dark` / `dark-2` / `dark-line`         | `#17161B` / `#211F25` / `#2E2C33` | surfaces sombres, interfaces en jeu                |
+| `dark-text` / `dark-muted`              | `#EEECE8` / `#A3A0A8`             | texte sur surfaces sombres                         |
+| `ok` (sur sombre) / `warn` (sur sombre) | `#6FCF97` / `#E8B04B`             | états dans les UI de jeu                           |
+| `green` (sur clair)                     | `#1D7A46`                         | coches                                             |
+| `star`                                  | `#B57F00`                         | étoiles d'avis                                     |
 
 Couleurs secondaires, **sourdes**, réservées aux illustrations :
+
 - tuiles de tablette : rouge `#D23A40→#7E0E13`, ardoise `#46648C→#1D2C44`, sauge `#5F8C6E→#24392B`, graphite `#55535C→#1D1C21` ;
 - gangs : Lynx `#3D5A80`, Corbeaux `#C8161D`.
 
 **Interdits :** violet, dégradés néon, bleu Discord (les boutons Discord sont noirs), glassmorphism, emojis, icônes génériques en grille de trois cartes.
 
 **Typographie :**
+
 - titres en Bricolage Grotesque 700 :
   - `h1` : `clamp(40px, 5.8vw, 76px)`, interligne .98, letter-spacing −0,04em ;
   - `h2` : `clamp(30px, 3.8vw, 50px)`, interligne 1.02, −0,035em ;
@@ -91,6 +93,7 @@ Couleurs secondaires, **sourdes**, réservées aux illustrations :
 - surtitres : petit trait rouge de 18×2 px, puis le libellé en `muted` 13,5 px.
 
 **Formes :**
+
 - boutons en pilule, 48 px de haut (40 px en petite taille) ;
 - cartes en rayon 18-22 px ;
 - ombres douces : `0 30px 70px rgba(22,21,26,.18)` pour les éléments flottants, rien sur les cartes à plat.
@@ -139,6 +142,7 @@ Les autres pages (Fonctionnalités, Tarifs, Avis, FAQ, Discord) suivent leurs fi
 ## 5. Animations (le cœur de la demande)
 
 Le site doit paraître vivant et un peu futuriste, **sans jamais gêner la lecture**. Règles générales :
+
 - Une seule courbe maison : `cubic-bezier(.2,.75,.2,1)`, exportée depuis `lib/motion.ts`.
 - Durées de 0,35 à 0,9 s ; jamais de rebond.
 - `prefers-reduced-motion` : tout est désactivé, sauf les fondus de moins de 200 ms ; le contenu reste visible.
@@ -147,20 +151,21 @@ Le site doit paraître vivant et un peu futuriste, **sans jamais gêner la lectu
 
 Bibliothèque de composants `components/motion/` à créer, puis à utiliser partout :
 
-| Composant | Effet | Où |
-|---|---|---|
-| `Reveal` | fondu + translation 36 px à l'entrée dans le viewport (Motion `whileInView`, `once: true`, décalage en cascade des enfants de 60 ms) | toutes les sections |
-| `SplitHeading` | titres découpés en mots (GSAP SplitText) qui montent depuis un masque, en cascade | tous les `h1` / `h2` |
-| `ScrambleText` | texte qui se « décrypte » (caractères aléatoires `A-Z0-9#$%` puis le vrai texte, sur 600 ms) | numéros de version, `connect …`, prix au changement d'offre, valeur resmon |
-| `CountUp` | compteur de 0 à la valeur, au format fr-FR | « 0,30 ms », revenus des territoires, prix |
-| `DrawLine` | tracé SVG progressif (DrawSVG) | ligne de pouls du hero, contours des quartiers à l'entrée, ligne du pied de page |
-| `Magnetic` | le bouton suit légèrement le curseur (max 8 px, ressort Motion) | boutons principaux |
-| `Spotlight` | halo radial rouge très léger (`rgba(200,22,29,.07)`) qui suit la souris sur une carte, et bordure qui s'éclaire près du curseur | cartes d'offres, cartes Fonctionnalités, cartes FAQ |
-| `DotField` | grille de points `line-2` en fond de hero ; les points proches du curseur grossissent légèrement (canvas 2D, 60 fps, pause hors écran) | Hero, et la page Fonctionnalités en version discrète |
-| `Marquee` | défilement infini, vitesse liée à la vitesse de scroll (accélère quand on défile) | FinalCta |
-| `PulseLine` | ECG animé en boucle (SVG dupliqué, translation −50 %) | PerfBand |
+| Composant      | Effet                                                                                                                                  | Où                                                                               |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `Reveal`       | fondu + translation 36 px à l'entrée dans le viewport (Motion `whileInView`, `once: true`, décalage en cascade des enfants de 60 ms)   | toutes les sections                                                              |
+| `SplitHeading` | titres découpés en mots (GSAP SplitText) qui montent depuis un masque, en cascade                                                      | tous les `h1` / `h2`                                                             |
+| `ScrambleText` | texte qui se « décrypte » (caractères aléatoires `A-Z0-9#$%` puis le vrai texte, sur 600 ms)                                           | numéros de version, `connect …`, prix au changement d'offre, valeur resmon       |
+| `CountUp`      | compteur de 0 à la valeur, au format fr-FR                                                                                             | « 0,30 ms », revenus des territoires, prix                                       |
+| `DrawLine`     | tracé SVG progressif (DrawSVG)                                                                                                         | ligne de pouls du hero, contours des quartiers à l'entrée, ligne du pied de page |
+| `Magnetic`     | le bouton suit légèrement le curseur (max 8 px, ressort Motion)                                                                        | boutons principaux                                                               |
+| `Spotlight`    | halo radial rouge très léger (`rgba(200,22,29,.07)`) qui suit la souris sur une carte, et bordure qui s'éclaire près du curseur        | cartes d'offres, cartes Fonctionnalités, cartes FAQ                              |
+| `DotField`     | grille de points `line-2` en fond de hero ; les points proches du curseur grossissent légèrement (canvas 2D, 60 fps, pause hors écran) | Hero, et la page Fonctionnalités en version discrète                             |
+| `Marquee`      | défilement infini, vitesse liée à la vitesse de scroll (accélère quand on défile)                                                      | FinalCta                                                                         |
+| `PulseLine`    | ECG animé en boucle (SVG dupliqué, translation −50 %)                                                                                  | PerfBand                                                                         |
 
 Animations spécifiques en plus :
+
 - **Scroll pinné de l'histoire du soir** (ScrollTrigger, `pin: true`, desktop uniquement) : le défilement fait avancer les 5 moments, et la barre de progression suit le scroll. L'avance automatique ne sert que de repli quand la section n'est pas pinnée (mobile).
 - **Révélation mot par mot de PerfBand** : ScrollTrigger `scrub`, de `#4A4850` à `dark-text`.
 - **GameStage** : légère inclinaison 3D au défilement (rotateX de 8° à 0° quand la scène arrive au centre) en plus de la parallaxe souris.
@@ -173,6 +178,7 @@ Inspirations à **ne pas copier** : unbbound.com (profondeur, texte révélé), 
 ## 6. Contenu éditable (`content/`)
 
 Tout ce qui change sans toucher au design est typé et centralisé :
+
 - `site.ts` : nom, URL du Discord (`https://discord.gg/pulsedev`, à confirmer), commande `connect`, URL du panel, liens YouTube (placeholder), mentions légales (placeholders) ;
 - `offers.ts` : Mensuelle 25 € / 30 jours, Lifetime 150 € une fois (recommandée), Unlock 300 € une fois, avec les avantages de chaque offre tels qu'ils figurent dans les références ;
 - `releases.ts` : versions (données d'exemple marquées `example: true`) ;
@@ -202,6 +208,7 @@ Mentions obligatoires : « TVA non applicable, art. 293 B du CGI » sous les pri
 ## 8. Déploiement sur le VPS (à faire seulement quand je te le dis)
 
 Le VPS IONOS (Ubuntu) héberge **d'autres projets en production : n'y touche jamais.** Règles strictes :
+
 1. Avant tout, liste l'existant **en lecture seule** : `pm2 ls`, `ss -ltnp`, `ls /etc/nginx/sites-enabled`. Choisis un port libre (essaie 3100 et vérifie qu'il est libre).
 2. Build en production (`pnpm build`), puis lancement avec PM2 sous le nom `pulse-site` (`pm2 start pnpm --name pulse-site -- start -p <port>`), puis `pm2 save`.
 3. Nginx : crée **uniquement** un nouveau fichier `/etc/nginx/sites-available/pulse-site.conf`, avec reverse proxy, gzip et cache long sur `/_next/static`. Fais une sauvegarde horodatée de tout fichier nginx avant d'y toucher. Lance `sudo nginx -t` et ne fais `systemctl reload nginx` que s'il passe.

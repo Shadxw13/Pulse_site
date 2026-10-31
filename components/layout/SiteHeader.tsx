@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, useMotionValueEvent, useScroll } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { m } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
 import { Wordmark } from '@/components/ui/Logo';
 import { buttonClass } from '@/components/ui/Button';
 import { nav, site } from '@/content/site';
@@ -22,18 +22,35 @@ function isActive(pathname: string, href: string) {
 export function SiteHeader() {
   const pathname = usePathname();
   const reduce = useReducedMotion();
-  const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
+  const openRef = useRef(open);
+  openRef.current = open;
 
-  useMotionValueEvent(scrollY, 'change', (y) => {
-    const prev = scrollY.getPrevious() ?? 0;
-    setScrolled(y > 24);
-    if (open) return;
-    if (y > 120 && y > prev + 2) setHidden(true);
-    else if (y < prev - 2 || y <= 120) setHidden(false);
-  });
+  useEffect(() => {
+    let prev = window.scrollY;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY;
+        setScrolled(y > 24);
+        if (!openRef.current) {
+          if (y > 120 && y > prev + 2) setHidden(true);
+          else if (y < prev - 2 || y <= 120) setHidden(false);
+        }
+        prev = y;
+      });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -43,12 +60,10 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <motion.header
+    <m.header
       className={cn(
         'sticky top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300',
-        scrolled || open
-          ? 'border-line bg-bg/86 backdrop-blur-[10px]'
-          : 'border-transparent bg-bg',
+        scrolled || open ? 'border-line bg-bg/86 backdrop-blur-[10px]' : 'border-transparent bg-bg',
       )}
       animate={{ y: hidden && !open ? '-100%' : '0%' }}
       transition={{ duration: reduce ? 0 : DUR.fast, ease: EASE }}
@@ -79,7 +94,7 @@ export function SiteHeader() {
               >
                 {l.label}
                 {on && (
-                  <motion.span
+                  <m.span
                     layoutId="nav-underline"
                     className="absolute right-0 bottom-0 left-0 h-px bg-ink"
                     transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
@@ -108,7 +123,16 @@ export function SiteHeader() {
             onClick={() => setOpen((o) => !o)}
             className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-line bg-transparent text-ink min-[900px]:hidden"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
               <path d={open ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16'} />
             </svg>
           </button>
@@ -116,7 +140,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <motion.nav
+        <m.nav
           id="menu-mobile"
           aria-label="Navigation principale"
           className="flex flex-col border-t border-line px-[clamp(16px,4vw,40px)] pt-2 pb-[18px] min-[900px]:hidden"
@@ -143,8 +167,8 @@ export function SiteHeader() {
           >
             Se connecter
           </a>
-        </motion.nav>
+        </m.nav>
       )}
-    </motion.header>
+    </m.header>
   );
 }

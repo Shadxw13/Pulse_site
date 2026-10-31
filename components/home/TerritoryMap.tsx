@@ -50,8 +50,8 @@ export function TerritoryMap() {
           <Eyebrow>Territoires</Eyebrow>
           <SplitHeading className="h2">La ville appartient à ceux qui la tiennent.</SplitHeading>
           <p className="lead !text-base">
-            Chaque quartier se capture en jeu et rapporte à son gang. Revenus, délais et alertes se règlent quartier par
-            quartier.
+            Chaque quartier se capture en jeu et rapporte à son gang. Revenus, délais et alertes se règlent
+            quartier par quartier.
           </p>
           <div className="mt-1.5 flex flex-col gap-2">
             {zones.map((zone, i) => {
@@ -68,7 +68,10 @@ export function TerritoryMap() {
                   )}
                 >
                   <span className="flex items-center gap-2.5">
-                    <i className="size-2.5 flex-none rounded-full" style={{ background: colorsOf(i).stroke }} />
+                    <i
+                      className="size-2.5 flex-none rounded-full"
+                      style={{ background: colorsOf(i).stroke }}
+                    />
                     {zone.name}
                   </span>
                   <span className="text-[13.5px] text-muted">{zone.contested ? 'Contesté' : zone.owner}</span>
@@ -101,12 +104,25 @@ export function TerritoryMap() {
                   data-zone
                   d={zone.path}
                   onClick={() => setSel(i)}
-                  className={cn('cursor-pointer transition-[stroke-width] duration-300', zone.contested && 'loop-pulse')}
-                  style={{ fill: c.fill, stroke: on ? 'var(--color-ink)' : c.stroke, strokeWidth: on ? 3 : 1.5 }}
+                  className={cn(
+                    'cursor-pointer transition-[stroke-width] duration-300',
+                    zone.contested && 'loop-pulse',
+                  )}
+                  style={{
+                    fill: c.fill,
+                    stroke: on ? 'var(--color-ink)' : c.stroke,
+                    strokeWidth: on ? 3 : 1.5,
+                  }}
                 />
               );
             })}
-            <g className="fill-ink" fontFamily="var(--font-instrument), Arial, sans-serif" fontSize="14" fontWeight="600" pointerEvents="none">
+            <g
+              className="fill-ink"
+              fontFamily="var(--font-instrument), Arial, sans-serif"
+              fontSize="14"
+              fontWeight="600"
+              pointerEvents="none"
+            >
               {zones.map((zone) => (
                 <text key={zone.name} x={zone.label.x} y={zone.label.y}>
                   {zone.name}
@@ -114,10 +130,12 @@ export function TerritoryMap() {
               ))}
             </g>
           </svg>
-          <div className="relative mt-3 flex w-auto flex-col gap-2 rounded-[18px] border border-line bg-surf p-[18px] shadow-[0_24px_50px_rgba(22,21,26,.12)] md:absolute md:right-[18px] md:-bottom-7 md:mt-0 md:w-[300px]">
+          <div className="relative mt-3 flex w-auto flex-col gap-2 rounded-[18px] border border-line bg-surf p-[18px] shadow-card md:absolute md:right-[18px] md:-bottom-7 md:mt-0 md:w-[300px]">
             <div className="flex items-center justify-between">
               <b className="display text-lg font-bold">{z.name}</b>
-              <Tag tone={z.contested ? 'red' : 'neutral'}>{z.contested ? 'Contesté' : z.owner === 'Libre' ? 'Libre' : 'Tenu'}</Tag>
+              <Tag tone={z.contested ? 'red' : 'neutral'}>
+                {z.contested ? 'Contesté' : z.owner === 'Libre' ? 'Libre' : 'Tenu'}
+              </Tag>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-muted">Contrôlé par</span>

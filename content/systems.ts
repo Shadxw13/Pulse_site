@@ -4,7 +4,10 @@ export const features: Array<{ title: string; text: string }> = [
     title: 'Territoires',
     text: 'Des quartiers que les gangs capturent en jeu, avec revenus, alertes et règles réglables depuis le panel.',
   },
-  { title: 'Optimisation', text: 'Environ 0,30 ms côté serveur. Chaque ressource est mesurée avant d’entrer dans la base.' },
+  {
+    title: 'Optimisation',
+    text: 'Environ 0,30 ms côté serveur. Chaque ressource est mesurée avant d’entrer dans la base.',
+  },
   {
     title: 'ESX Legacy + ox_inventory',
     text: 'Un socle connu de la scène, nettoyé et harmonisé, avec un inventaire moderne.',

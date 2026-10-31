@@ -15,13 +15,18 @@ export function TestAndReview() {
           <Eyebrow onDark>Serveur de test</Eyebrow>
           <SplitHeading className="h2">Venez rouler dessus ce soir.</SplitHeading>
           <p className="m-0 max-w-[46ch] text-dark-muted">
-            Le serveur de test tourne avec la dernière version de Pulse. Ouvrez FiveM, appuyez sur F8 et collez la commande.
+            Le serveur de test tourne avec la dernière version de Pulse. Ouvrez FiveM, appuyez sur F8 et
+            collez la commande.
           </p>
           <CopyCommand command={site.testServer.command} className="max-w-[460px]" />
           <span className="text-[13px] text-dark-muted">Ouvert à tous, sans inscription.</span>
         </Reveal>
         {review && (
-          <Reveal as="figure" delay={0.08} className="m-0 flex flex-col justify-between gap-6 rounded-[18px] border border-line bg-surf p-[clamp(28px,4vw,40px)]">
+          <Reveal
+            as="figure"
+            delay={0.08}
+            className="m-0 flex flex-col justify-between gap-6 rounded-[18px] border border-line bg-surf p-[clamp(28px,4vw,40px)]"
+          >
             <svg width="34" height="26" viewBox="0 0 34 26" aria-hidden="true" className="fill-red">
               <path d="M0 26V15C0 6 5 1 13 0l1 4c-5 1-8 4-8 9h7v13zm20 0V15c0-9 5-14 13-15l1 4c-5 1-8 4-8 9h7v13z" />
             </svg>

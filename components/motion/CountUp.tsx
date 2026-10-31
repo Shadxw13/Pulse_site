@@ -1,11 +1,10 @@
 'use client';
 
-import { animate, useInView } from 'motion/react';
 import { useEffect, useRef } from 'react';
-import { EASE } from '@/lib/motion';
+import { easePulse } from '@/lib/motion';
 import { prefersReducedMotion } from '@/lib/useReducedMotion';
 
-/** Compteur de 0 à la valeur, au format fr-FR, déclenché à l’entrée dans le viewport. */
+/** Compteur de 0 à la valeur, au format fr-FR, déclenché à l’entrée dans le viewport (puis à chaque changement). */
 export function CountUp({
   value,
   decimals = 0,
@@ -22,33 +21,54 @@ export function CountUp({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const shown = useRef<number | null>(null);
   const fmt = (n: number) =>
-    prefix + n.toLocaleString('fr-FR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+    prefix +
+    n.toLocaleString('fr-FR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) +
+    suffix;
   const final = fmt(value);
-  const played = useRef(false);
-  const last = useRef(value);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || !inView) return;
+    if (!el) return;
     if (prefersReducedMotion()) {
       el.textContent = final;
+      shown.current = value;
       return;
     }
-    const from = played.current ? last.current : 0;
-    played.current = true;
-    last.current = value;
-    const ctrl = animate(from, value, {
-      duration,
-      ease: EASE,
-      onUpdate: (v) => {
+    let raf = 0;
+    const run = (from: number) => {
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - t0) / (duration * 1000));
+        const v = from + (value - from) * easePulse(p);
         el.textContent = fmt(v);
+        shown.current = v;
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+    // Déjà joué : on anime depuis la valeur affichée.
+    if (shown.current !== null) {
+      run(shown.current);
+      return () => cancelAnimationFrame(raf);
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          run(0);
+        }
       },
-    });
-    return () => ctrl.stop();
+      { threshold: 0.6 },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView, value]);
+  }, [value]);
 
   return (
     <span className={className} style={{ fontVariantNumeric: 'tabular-nums' }}>

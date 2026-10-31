@@ -1,6 +1,14 @@
 import { cn } from '@/lib/cn';
 
-export function Tag({ children, tone = 'neutral', className }: { children: React.ReactNode; tone?: 'neutral' | 'red'; className?: string }) {
+export function Tag({
+  children,
+  tone = 'neutral',
+  className,
+}: {
+  children: React.ReactNode;
+  tone?: 'neutral' | 'red';
+  className?: string;
+}) {
   return (
     <span
       className={cn(

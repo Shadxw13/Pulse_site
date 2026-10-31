@@ -15,7 +15,8 @@ function subscribeTo(query: string) {
 function useMedia(query: string, serverValue: boolean): boolean {
   return useSyncExternalStore(
     subscribeTo(query),
-    () => (typeof window !== 'undefined' && window.matchMedia ? window.matchMedia(query).matches : serverValue),
+    () =>
+      typeof window !== 'undefined' && window.matchMedia ? window.matchMedia(query).matches : serverValue,
     () => serverValue,
   );
 }

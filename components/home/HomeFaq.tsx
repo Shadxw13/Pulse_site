@@ -35,9 +35,14 @@ export function HomeFaq() {
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   className="flex w-full cursor-pointer items-center gap-[18px] border-0 bg-transparent py-[22px] text-left text-[17px] leading-[1.4] font-medium text-ink"
                 >
-                  <span className="mono w-[34px] flex-none text-[13px] font-medium text-red-text">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="mono w-[34px] flex-none text-[13px] font-medium text-red-text">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   {f.q}
-                  <PlusSign open={isOpen} className="ml-auto inline-block flex-none text-[22px] leading-none" />
+                  <PlusSign
+                    open={isOpen}
+                    className="ml-auto inline-block flex-none text-[22px] leading-none"
+                  />
                 </button>
                 <AccordionPanel open={isOpen} id={pid} labelledBy={qid}>
                   <p className="m-0 max-w-[64ch] pb-6 pl-[52px] text-ink-2">{f.a}</p>

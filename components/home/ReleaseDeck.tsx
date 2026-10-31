@@ -23,8 +23,8 @@ export function ReleaseDeck() {
           <Eyebrow>Mises à jour</Eyebrow>
           <SplitHeading className="h2">Une base qui continue d’avancer après votre achat.</SplitHeading>
           <p className="lead !text-base">
-            Chaque version arrive dans votre espace client avec ses notes et sa documentation. Le support répond par ticket
-            sur le Discord.
+            Chaque version arrive dans votre espace client avec ses notes et sa documentation. Le support
+            répond par ticket sur le Discord.
           </p>
           <div className="flex flex-wrap gap-2.5">
             <Button size="sm" href={site.panel.downloads}>
@@ -54,9 +54,12 @@ export function ReleaseDeck() {
                 <article
                   key={r.version}
                   aria-hidden={k !== 0}
-                  className="absolute inset-x-0 top-0 rounded-[20px] border border-line bg-surf p-[26px] shadow-[0_20px_50px_rgba(22,21,26,.08)]"
+                  className="absolute inset-x-0 top-0 rounded-[20px] border border-line bg-surf p-[26px] shadow-deck"
                   style={{
-                    transform: k < 0 ? 'translate(-40px, 0) rotate(-6deg)' : `translate(${k * 16}px, ${k * 14}px) scale(${1 - k * 0.04})`,
+                    transform:
+                      k < 0
+                        ? 'translate(-40px, 0) rotate(-6deg)'
+                        : `translate(${k * 16}px, ${k * 14}px) scale(${1 - k * 0.04})`,
                     opacity: k < 0 ? 0 : shown ? 1 - k * 0.25 : 0,
                     zIndex: 10 - Math.abs(k),
                     transition: `transform .6s ${EASE_CSS}, opacity .6s`,
@@ -87,7 +90,12 @@ export function ReleaseDeck() {
               {cur.version} · {pos + 1} sur {releases.length}
               {releasesAreExamples ? ' (exemples)' : ''}
             </span>
-            <Button size="sm" onClick={() => setPos((p) => Math.max(0, p - 1))} aria-label="Version plus récente" disabled={pos === 0}>
+            <Button
+              size="sm"
+              onClick={() => setPos((p) => Math.max(0, p - 1))}
+              aria-label="Version plus récente"
+              disabled={pos === 0}
+            >
               ←
             </Button>
             <Button

@@ -99,8 +99,24 @@ export function formatPrice(n: number): string {
 }
 
 export const orderSteps = [
-  { n: '01', title: 'Rejoignez le Discord', text: 'Passez sur le serveur Pulse - Development et lisez le salon boutique.' },
-  { n: '02', title: 'Ouvrez un ticket', text: 'Choisissez votre formule. Un membre de l’équipe vous répond dans le ticket.' },
-  { n: '03', title: 'Payez par PayPal', text: 'Vous recevez le lien de paiement. L’équipe valide le paiement à réception.' },
-  { n: '04', title: 'Recevez votre licence', text: 'La clé arrive en message privé. Les fichiers sont dans votre espace client.' },
+  {
+    n: '01',
+    title: 'Rejoignez le Discord',
+    text: 'Passez sur le serveur Pulse - Development et lisez le salon boutique.',
+  },
+  {
+    n: '02',
+    title: 'Ouvrez un ticket',
+    text: 'Choisissez votre formule. Un membre de l’équipe vous répond dans le ticket.',
+  },
+  {
+    n: '03',
+    title: 'Payez par PayPal',
+    text: 'Vous recevez le lien de paiement. L’équipe valide le paiement à réception.',
+  },
+  {
+    n: '04',
+    title: 'Recevez votre licence',
+    text: 'La clé arrive en message privé. Les fichiers sont dans votre espace client.',
+  },
 ];

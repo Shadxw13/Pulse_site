@@ -29,10 +29,10 @@ function spark(x: number, y: number) {
   window.setTimeout(() => host.remove(), 460);
 }
 
-export function ButtonFx({ children }: { children: React.ReactNode }) {
+export function ButtonFx({ children, className }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   return (
-    <Magnetic>
+    <Magnetic className={className}>
       <span
         ref={ref}
         className="contents"

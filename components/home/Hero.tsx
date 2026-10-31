@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/Button';
 import { LazyDotField } from '@/components/motion/LazyDotField';
+import { DrawLine } from '@/components/motion/DrawLine';
 import { SplitHeading } from '@/components/motion/SplitHeading';
 import { GameStage } from './GameStage';
 
@@ -16,12 +17,7 @@ export function Hero() {
           </b>
           ox_inventory · environ 0,30 ms côté serveur
         </span>
-        <SplitHeading
-          as="h1"
-          immediate
-          className="h1 max-w-[15ch] !text-[clamp(44px,6.4vw,88px)]"
-          draw={{ selector: '[data-pulse-line]', delay: 0.4, duration: 1.4 }}
-        >
+        <SplitHeading as="h1" immediate afterIntro className="h1 max-w-[15ch] !text-[clamp(44px,6.4vw,88px)]">
           Votre serveur RP, sur une base qui{' '}
           <span className="relative whitespace-nowrap">
             tient la charge
@@ -31,23 +27,23 @@ export function Hero() {
               preserveAspectRatio="none"
               className="absolute right-0 bottom-[-0.16em] left-0 h-[0.32em] w-full overflow-visible"
             >
-              <path
-                data-pulse-line
-                data-draw="pending"
+              <DrawLine
                 d="M0 24 H150 L166 24 L178 6 L192 38 L204 14 L214 24 H400"
                 fill="none"
                 className="stroke-red"
                 strokeWidth={5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                delay={0.4}
+                afterIntro
               />
             </svg>
           </span>
           .
         </SplitHeading>
         <p className="lead max-w-[52ch] !text-[17.5px]">
-          Pulse réunit les systèmes d’un serveur ESX complet, un espace client pour tout régler depuis votre navigateur
-          et une tablette de gestion en jeu.
+          Pulse réunit les systèmes d’un serveur ESX complet, un espace client pour tout régler depuis votre
+          navigateur et une tablette de gestion en jeu.
         </p>
         <div className="flex flex-wrap justify-center gap-2.5">
           <Button variant="red" href="/tarifs">

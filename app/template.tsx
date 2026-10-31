@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { EASE } from '@/lib/motion';
 
@@ -17,7 +17,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     window.__pulseNavigated = true;
   }, []);
   return (
-    <motion.main
+    <m.main
       id="contenu"
       tabIndex={-1}
       className="overflow-x-clip outline-none"
@@ -26,6 +26,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
       transition={{ duration: 0.25, ease: EASE }}
     >
       {children}
-    </motion.main>
+    </m.main>
   );
 }

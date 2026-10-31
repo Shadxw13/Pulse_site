@@ -29,8 +29,10 @@ export default function DotField({
     const canvas = ref.current;
     const ctx = canvas?.getContext('2d');
     if (!canvas || !ctx) return;
-    const color = getComputedStyle(document.documentElement).getPropertyValue('--color-line-2').trim() || 'gray';
-    const interactive = !prefersReducedMotion() && !isMobileViewport() && matchMedia('(hover: hover)').matches;
+    const color =
+      getComputedStyle(document.documentElement).getPropertyValue('--color-line-2').trim() || 'gray';
+    const interactive =
+      !prefersReducedMotion() && !isMobileViewport() && matchMedia('(hover: hover)').matches;
 
     let w = 0;
     let h = 0;
@@ -124,5 +126,11 @@ export default function DotField({
     };
   }, [gap, radius, boost, reach, opacity]);
 
-  return <canvas ref={ref} aria-hidden="true" className={cn('pointer-events-none absolute inset-0 h-full w-full', className)} />;
+  return (
+    <canvas
+      ref={ref}
+      aria-hidden="true"
+      className={cn('pointer-events-none absolute inset-0 h-full w-full', className)}
+    />
+  );
 }

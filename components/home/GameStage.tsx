@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useSpring, useTransform } from 'motion/react';
+import { m, useSpring, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { useGsapFx } from '@/lib/gsap';
 import { isMobileViewport, prefersReducedMotion } from '@/lib/useReducedMotion';
@@ -62,10 +62,10 @@ export function GameStage() {
       aria-label="Une scène de jeu avec le HUD de la base, une notification de territoire, la tablette de gestion et l’application bancaire"
       className="relative mx-auto max-w-[1080px] max-md:h-auto md:h-[560px] md:[perspective:1800px]"
     >
-      <div ref={tilt} className="relative h-full [transform-style:preserve-3d]">
-        <motion.div
+      <div ref={tilt} className="stage-tilt relative h-full [transform-style:preserve-3d]">
+        <m.div
           style={{ rotateX: screenRX, rotateY: screenRY }}
-          className="overflow-hidden rounded-[20px] shadow-[0_50px_90px_rgba(22,21,26,.28),0_0_0_1px_rgba(22,21,26,.08)] max-md:relative max-md:h-[380px] md:absolute md:inset-x-[5%] md:top-0 md:h-[500px] [transform-style:preserve-3d]"
+          className="overflow-hidden rounded-[20px] shadow-stage max-md:relative max-md:h-[380px] md:absolute md:inset-x-[5%] md:top-0 md:h-[500px] [transform-style:preserve-3d]"
         >
           <CityScene />
           <div className="slide-in absolute top-[22px] right-[22px] w-[220px] rounded-xl border-l-[3px] border-red bg-dark/88 px-3.5 py-3 text-[12.5px] text-dark-text md:w-[270px]">
@@ -92,11 +92,11 @@ export function GameStage() {
             <div className="display text-[54px] leading-[0.9] font-extrabold tracking-[-0.04em]">87</div>
             <div className="text-xs opacity-90">km/h · essence 72 %</div>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           style={{ x: bankX, y: bankY, rotate: -4 }}
-          className="ui absolute top-[70px] left-0 hidden w-[230px] shadow-[0_30px_60px_rgba(22,21,26,.3)] md:block"
+          className="ui absolute top-[70px] left-0 hidden w-[230px] shadow-pop md:block"
         >
           <div className="ui-h">
             <b>Banque</b>
@@ -114,13 +114,16 @@ export function GameStage() {
               <span className="mono">− 850 $</span>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           style={{ x: tabX, y: tabY, rotate: 3, background: scene.tabletEdge }}
-          className="absolute top-[270px] right-0 hidden w-[320px] rounded-[22px] p-2.5 shadow-[0_30px_60px_rgba(22,21,26,.3)] md:block"
+          className="absolute top-[270px] right-0 hidden w-[320px] rounded-[22px] p-2.5 shadow-pop md:block"
         >
-          <div className="flex flex-col gap-2 overflow-hidden rounded-[14px] p-2.5" style={{ background: scene.tabletScreen }}>
+          <div
+            className="flex flex-col gap-2 overflow-hidden rounded-[14px] p-2.5"
+            style={{ background: scene.tabletScreen }}
+          >
             <div className="flex justify-between text-[11px] text-dark-muted">
               <span>Pulse Gestion</span>
               <span className="mono">21:40</span>
@@ -140,7 +143,7 @@ export function GameStage() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

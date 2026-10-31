@@ -6,7 +6,15 @@ import { Button } from './Button';
 import { cn } from '@/lib/cn';
 
 /** Pilule sombre avec la commande `connect …` et un bouton Copier (« Copié » pendant 1,6 s). */
-export function CopyCommand({ command, size = 14.5, className }: { command: string; size?: number; className?: string }) {
+export function CopyCommand({
+  command,
+  size = 14.5,
+  className,
+}: {
+  command: string;
+  size?: number;
+  className?: string;
+}) {
   const [copied, setCopied] = useState(false);
   const t = useRef<number | undefined>(undefined);
   useEffect(() => () => window.clearTimeout(t.current), []);

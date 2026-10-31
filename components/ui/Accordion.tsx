@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { DUR, EASE, EASE_CSS } from '@/lib/motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 
@@ -22,7 +22,7 @@ export function AccordionPanel({
   const reduce = useReducedMotion();
   if (!open) return null;
   return (
-    <motion.div
+    <m.div
       id={id}
       role="region"
       aria-labelledby={labelledBy}
@@ -31,17 +31,29 @@ export function AccordionPanel({
       transition={{ duration: reduce ? DUR.reduced : DUR.fast, ease: EASE }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
 /** Le « + » qui tourne à 45° à l’ouverture. */
-export function PlusSign({ open, className, style }: { open: boolean; className?: string; style?: React.CSSProperties }) {
+export function PlusSign({
+  open,
+  className,
+  style,
+}: {
+  open: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   return (
     <span
       aria-hidden="true"
       className={className}
-      style={{ ...style, transform: `rotate(${open ? 45 : 0}deg)`, transition: `transform .3s ${EASE_CSS}, background-color .2s, color .2s, border-color .2s` }}
+      style={{
+        ...style,
+        transform: `rotate(${open ? 45 : 0}deg)`,
+        transition: `transform .3s ${EASE_CSS}, background-color .2s, color .2s, border-color .2s`,
+      }}
     >
       +
     </span>

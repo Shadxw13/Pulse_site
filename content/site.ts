@@ -54,7 +54,10 @@ export const nav: ReadonlyArray<{ key: NavKey; label: string; href: string }> = 
   { key: 'discord', label: 'Discord', href: '/discord' },
 ];
 
-export const footerColumns: ReadonlyArray<{ title: string; links: ReadonlyArray<{ label: string; href: string }> }> = [
+export const footerColumns: ReadonlyArray<{
+  title: string;
+  links: ReadonlyArray<{ label: string; href: string }>;
+}> = [
   {
     title: 'Produit',
     links: [

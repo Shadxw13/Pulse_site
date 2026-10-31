@@ -1,4 +1,10 @@
-import { Barlow_Semi_Condensed, Bricolage_Grotesque, Fraunces, Instrument_Sans, JetBrains_Mono } from 'next/font/google';
+import {
+  Barlow_Semi_Condensed,
+  Bricolage_Grotesque,
+  Fraunces,
+  Instrument_Sans,
+  JetBrains_Mono,
+} from 'next/font/google';
 
 export const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
@@ -18,6 +24,7 @@ export const jetbrains = JetBrains_Mono({
   weight: ['400', '500'],
   variable: '--font-jetbrains',
   display: 'swap',
+  preload: false,
 });
 
 /** Polices de l’aperçu du configurateur HUD uniquement : pas de préchargement. */
@@ -37,4 +44,6 @@ export const fraunces = Fraunces({
   preload: false,
 });
 
-export const fontVariables = [bricolage, instrument, jetbrains, barlow, fraunces].map((f) => f.variable).join(' ');
+export const fontVariables = [bricolage, instrument, jetbrains, barlow, fraunces]
+  .map((f) => f.variable)
+  .join(' ');

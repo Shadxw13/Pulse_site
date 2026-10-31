@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useSpring } from 'motion/react';
+import { m, useSpring } from 'motion/react';
 import { useRef } from 'react';
 import { isMobileViewport, prefersReducedMotion } from '@/lib/useReducedMotion';
 
@@ -8,15 +8,23 @@ const MAX = 8;
 const spring = { stiffness: 220, damping: 22, mass: 0.4 }; // amorti critique : pas de rebond
 
 /** Le contenu suit légèrement le curseur (8 px max, ressort Motion, sans rebond visible). */
-export function Magnetic({ children, strength = 0.25 }: { children: React.ReactNode; strength?: number }) {
+export function Magnetic({
+  children,
+  strength = 0.25,
+  className,
+}: {
+  children: React.ReactNode;
+  strength?: number;
+  className?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const x = useSpring(0, spring);
   const y = useSpring(0, spring);
 
   return (
-    <motion.span
+    <m.span
       ref={ref}
-      className="inline-flex"
+      className={className ?? 'inline-flex'}
       style={{ x, y }}
       onPointerMove={(e) => {
         if (e.pointerType !== 'mouse' || prefersReducedMotion() || isMobileViewport()) return;
@@ -33,6 +41,6 @@ export function Magnetic({ children, strength = 0.25 }: { children: React.ReactN
       }}
     >
       {children}
-    </motion.span>
+    </m.span>
   );
 }

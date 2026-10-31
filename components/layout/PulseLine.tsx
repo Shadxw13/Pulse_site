@@ -16,7 +16,14 @@ export function PulseLine({ className }: { className?: string }) {
       aria-hidden="true"
     >
       {[ROW, ROW2].map((d, i) => (
-        <path key={i} d={d} fill="none" strokeWidth={2.4} strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+        <path
+          key={i}
+          d={d}
+          fill="none"
+          strokeWidth={2.4}
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+        />
       ))}
     </svg>
   );

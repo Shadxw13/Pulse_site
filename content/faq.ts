@@ -73,7 +73,10 @@ export const pricingFaq: Array<{ q: string; a: string }> = [
     q: 'Pourquoi passer par un ticket ?',
     a: 'Chaque commande est suivie par une personne de l’équipe. Vous pouvez poser vos questions avant de payer, et tout reste écrit dans le ticket.',
   },
-  { q: 'Quels moyens de paiement acceptez-vous ?', a: 'PayPal pour l’instant. Le paiement par carte arrivera plus tard.' },
+  {
+    q: 'Quels moyens de paiement acceptez-vous ?',
+    a: 'PayPal pour l’instant. Le paiement par carte arrivera plus tard.',
+  },
   {
     q: 'Comment passer de la mensuelle à la Lifetime ?',
     a: 'Ouvrez un ticket et nous ajustons l’offre. Le passage reste possible à tout moment.',
