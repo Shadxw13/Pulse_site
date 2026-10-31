@@ -23,7 +23,7 @@ export const faq: FaqItem[] = [
   {
     category: 'Commande',
     q: 'Comment acheter ?',
-    a: 'Rejoignez le Discord, ouvrez un ticket depuis le salon boutique et choisissez votre formule. Vous payez par PayPal, l’équipe valide le paiement, puis votre licence vous est envoyée en message privé.',
+    a: 'Rejoignez le Discord, ouvrez un ticket depuis le salon boutique et choisissez votre formule. Vous acceptez les CGV, payez par carte via un lien Stripe sécurisé, puis votre licence vous est envoyée en message privé.',
   },
   {
     category: 'Commande',
@@ -51,7 +51,7 @@ export const faq: FaqItem[] = [
 export const homeFaq: Array<{ q: string; a: string }> = [
   {
     q: 'Faut-il savoir coder pour utiliser Pulse ?',
-    a: 'Non. Les réglages courants se font depuis l’espace client et la tablette en jeu. L’offre Unlock donne le code source pour aller plus loin.',
+    a: 'Non. Les réglages courants se font depuis l’espace client et la tablette en jeu. La configuration de la base reste ouverte si vous voulez aller plus loin.',
   },
   {
     q: 'Mes ressources ESX vont-elles fonctionner ?',
@@ -59,11 +59,11 @@ export const homeFaq: Array<{ q: string; a: string }> = [
   },
   {
     q: 'Comment se passe la commande ?',
-    a: 'Sur le Discord, par ticket. Vous payez par PayPal, l’équipe valide le paiement, puis la licence arrive en message privé.',
+    a: 'Sur le Discord, par ticket. Vous payez par carte via Stripe, puis la licence arrive en message privé.',
   },
   {
     q: 'Puis-je changer d’offre plus tard ?',
-    a: 'Oui. Ouvrez un ticket pour passer de la mensuelle à la Lifetime, ou de la Lifetime à l’Unlock.',
+    a: 'Oui. Ouvrez un ticket pour passer de la mensuelle à l’annuelle ou à la Lifetime.',
   },
 ];
 
@@ -75,7 +75,7 @@ export const pricingFaq: Array<{ q: string; a: string }> = [
   },
   {
     q: 'Quels moyens de paiement acceptez-vous ?',
-    a: 'PayPal pour l’instant. Le paiement par carte arrivera plus tard.',
+    a: 'La carte bancaire, via Stripe. Le paiement est sécurisé et vous recevez une facture.',
   },
   {
     q: 'Comment passer de la mensuelle à la Lifetime ?',

@@ -43,6 +43,8 @@
   --font-display: var(--font-bricolage), Arial, sans-serif;
   --font-sans: var(--font-instrument), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-bai: var(--font-baijam), 'Bai Jamjuree', sans-serif;
+  --font-hudnum: var(--font-montserrat), Montserrat, sans-serif;
 
   --ease-pulse: cubic-bezier(0.2, 0.75, 0.2, 1);
   --shadow-float: 0 30px 70px rgba(22, 21, 26, 0.18);
@@ -507,5 +509,38 @@ html[data-intro='play'] .split-intro .sw-i {
   .stage-tilt {
     transform: rotateX(8deg);
     transform-origin: 50% 100%;
+  }
+}
+
+/* Barre de durée des notifications du HUD (vide en 2 cycles) */
+.notif-bar {
+  animation-name: notif-bar;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes notif-bar {
+  to {
+    transform: scaleX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .notif-bar {
+    animation: none;
+    transform: scaleX(0.6);
+  }
+}
+
+/* Changement de réglage dans les agrandissements du HUD */
+.zoom-in {
+  animation: zoom-in 0.35s ease both;
+}
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zoom-in {
+    animation-duration: 0.15s;
   }
 }

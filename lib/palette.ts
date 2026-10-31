@@ -79,3 +79,17 @@ export const discordMock = {
 
 export const hexA = (h: string, a: number) =>
   `rgba(${parseInt(h.slice(1, 3), 16)},${parseInt(h.slice(3, 5), 16)},${parseInt(h.slice(5, 7), 16)},${a})`;
+
+/**
+ * Interfaces en jeu de la base Pulse (repris du CSS du HUD) : notifications, compteur.
+ * Couleur serveur par défaut : pulse_color 237, 28, 36.
+ */
+export const pulseUi = {
+  server: '#ED1C24',
+  notifBg: 'linear-gradient(90deg, #0000008c, #00000062)',
+  notifTrack: '#00000080',
+  notifBar: 'linear-gradient(90deg, #fbd180, #f7cb6b)',
+  textDim: 'rgba(255,255,255,.55)',
+  rpmTrack: '#0006',
+  gearText: '#000',
+} as const;

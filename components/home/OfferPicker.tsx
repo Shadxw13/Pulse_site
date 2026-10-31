@@ -134,7 +134,7 @@ export function OfferPicker() {
           </Spotlight>
         </Reveal>
         <span className="text-[13px] text-muted">
-          Commande par ticket sur Discord. Paiement PayPal validé par l’équipe. TVA non applicable, art. 293 B
+          Commande par ticket sur Discord. Paiement par carte via Stripe. TVA non applicable, art. 293 B
           du CGI.
         </span>
       </div>

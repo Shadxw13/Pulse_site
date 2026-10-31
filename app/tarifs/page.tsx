@@ -13,7 +13,7 @@ import { cn } from '@/lib/cn';
 export const metadata: Metadata = {
   title: 'Tarifs',
   description:
-    'Base Pulse mensuelle à 25 €, Lifetime à 150 €, Unlock (code source) à 300 €. Commande par ticket sur Discord, paiement PayPal. TVA non applicable, art. 293 B du CGI.',
+    'Base Pulse mensuelle à 25 €, annuelle à 119 €, Lifetime à 150 €. Commande par ticket sur Discord, paiement par carte via Stripe. TVA non applicable, art. 293 B du CGI.',
   alternates: { canonical: '/tarifs' },
 };
 
@@ -105,7 +105,7 @@ export default function TarifsPage() {
         </div>
         <div className="wrap pt-[22px]">
           <div className="flex flex-wrap justify-center gap-x-[26px] gap-y-2.5 text-[13.5px] text-muted">
-            <span>Paiement PayPal, validé par l’équipe</span>
+            <span>Paiement par carte sécurisé par Stripe</span>
             <span>Licence envoyée en message privé</span>
             <span>TVA non applicable, art. 293 B du CGI</span>
           </div>

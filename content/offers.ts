@@ -1,4 +1,4 @@
-export type OfferId = 'mensuelle' | 'lifetime' | 'unlock';
+export type OfferId = 'mensuelle' | 'annuelle' | 'lifetime';
 
 /** Un avantage s’écrit « avant **gras** après », comme sur la page Tarifs. */
 export type Perk = { before: string; strong: string; after: string };
@@ -47,6 +47,28 @@ export const offers: Offer[] = [
     ],
   },
   {
+    id: 'annuelle',
+    label: 'Annuelle',
+    name: 'Base Pulse Annuelle',
+    short: 'Un an, deux mois offerts',
+    description: 'Un an de base et de mises à jour, moins cher que douze mensualités.',
+    price: 119,
+    per: '/ an',
+    recommended: false,
+    homePerks: [
+      'La base complète pendant 12 mois',
+      'Mises à jour pendant l’abonnement',
+      'Espace client et tablette de gestion',
+      'Support par ticket',
+    ],
+    perks: [
+      perk('Accès à la base pendant', '12 mois', 'renouvelables'),
+      perk('Mises à jour incluses pendant', 'l’abonnement'),
+      perk('Support', 'standard', 'par ticket'),
+      perk('Espace client et', 'panel', 'de configuration'),
+    ],
+  },
+  {
     id: 'lifetime',
     label: 'Lifetime',
     name: 'Base Pulse Lifetime',
@@ -66,28 +88,6 @@ export const offers: Offer[] = [
       perk('Mises à jour', 'à vie', 'incluses'),
       perk('Support', 'premium', 'prioritaire'),
       perk('Espace client et', 'panel', 'de configuration'),
-    ],
-  },
-  {
-    id: 'unlock',
-    label: 'Unlock',
-    name: 'Pulse Unlock',
-    short: 'Le code source complet',
-    description: 'Pour les équipes qui veulent modifier la base en profondeur.',
-    price: 300,
-    per: 'une fois',
-    recommended: false,
-    homePerks: [
-      'Tout le contenu de la Lifetime',
-      'L’intégralité du code source',
-      'Support premium prioritaire',
-      'Licence à vie pour un serveur',
-    ],
-    perks: [
-      perk('Tout le contenu de la', 'Lifetime'),
-      perk('Intégralité du', 'code source', 'accessible'),
-      perk('Support', 'premium', 'prioritaire'),
-      perk('Licence', 'à vie', 'pour un serveur'),
     ],
   },
 ];
@@ -111,8 +111,8 @@ export const orderSteps = [
   },
   {
     n: '03',
-    title: 'Payez par PayPal',
-    text: 'Vous recevez le lien de paiement. L’équipe valide le paiement à réception.',
+    title: 'Payez par carte',
+    text: 'Vous acceptez les CGV puis recevez un lien de paiement Stripe sécurisé.',
   },
   {
     n: '04',

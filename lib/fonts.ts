@@ -1,9 +1,9 @@
 import {
-  Barlow_Semi_Condensed,
+  Bai_Jamjuree,
   Bricolage_Grotesque,
-  Fraunces,
   Instrument_Sans,
   JetBrains_Mono,
+  Montserrat,
 } from 'next/font/google';
 
 export const bricolage = Bricolage_Grotesque({
@@ -27,23 +27,23 @@ export const jetbrains = JetBrains_Mono({
   preload: false,
 });
 
-/** Polices de l’aperçu du configurateur HUD uniquement : pas de préchargement. */
-export const barlow = Barlow_Semi_Condensed({
+/** Polices des interfaces en jeu de la base (HUD, notifications) : pas de préchargement. */
+export const bai = Bai_Jamjuree({
   subsets: ['latin'],
-  weight: ['500', '700'],
-  variable: '--font-barlow',
+  weight: ['300', '400', '600', '700'],
+  variable: '--font-baijam',
   display: 'swap',
   preload: false,
 });
 
-export const fraunces = Fraunces({
+export const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['600'],
-  variable: '--font-fraunces',
+  weight: ['800'],
+  variable: '--font-montserrat',
   display: 'swap',
   preload: false,
 });
 
-export const fontVariables = [bricolage, instrument, jetbrains, barlow, fraunces]
+export const fontVariables = [bricolage, instrument, jetbrains, bai, montserrat]
   .map((f) => f.variable)
   .join(' ');

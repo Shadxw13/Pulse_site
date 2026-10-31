@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { GameVideo } from '@/components/game/GameVideo';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitHeading } from '@/components/motion/SplitHeading';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -9,7 +10,6 @@ import { cn } from '@/lib/cn';
 import { useGsapFx } from '@/lib/gsap';
 import { EASE_CSS } from '@/lib/motion';
 import { isMobileViewport, prefersReducedMotion } from '@/lib/useReducedMotion';
-import { momentScreens } from './MomentScreens';
 
 /**
  * « Une soirée sur votre serveur » : 5 moments de 18:00 à 02:00.
@@ -105,8 +105,8 @@ export function EveningStory() {
             </SplitHeading>
           </div>
           <p className="lead max-w-[40ch] !text-[15.5px]">
-            Cinq moments d’une soirée type, avec les écrans que vos joueurs croisent. Tous ont été dessinés
-            pour la base.
+            Cinq moments d’une soirée type, avec les vraies interfaces que vos joueurs croisent, filmées
+            depuis la base.
           </p>
         </Reveal>
 
@@ -156,7 +156,10 @@ export function EveningStory() {
           </div>
 
           <div className="grid grid-cols-1 items-stretch gap-[18px] md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
-            <div className="relative min-h-[420px] overflow-hidden rounded-[22px]" aria-live="polite">
+            <div
+              className="relative min-h-[260px] md:min-h-[420px] overflow-hidden rounded-[22px]"
+              aria-live="polite"
+            >
               {moments.map((mo, i) => (
                 <div
                   key={`sky-${mo.hour}`}
@@ -172,14 +175,19 @@ export function EveningStory() {
                 <div
                   key={mo.hour}
                   aria-hidden={i !== hour}
-                  className="absolute inset-0 flex items-center justify-center p-8"
+                  className="absolute inset-0 flex items-center justify-center p-[clamp(14px,3vw,32px)]"
                   style={{
                     opacity: i === hour ? 1 : 0,
                     transform: i === hour ? 'translateY(0) scale(1)' : 'translateY(18px) scale(.97)',
                     transition: `opacity .6s ease, transform .6s ${EASE_CSS}`,
                   }}
                 >
-                  {momentScreens[mo.screen]}
+                  <GameVideo
+                    name={mo.screen}
+                    label={mo.alt}
+                    active={i === hour}
+                    className="w-full rounded-[12px] shadow-device"
+                  />
                 </div>
               ))}
             </div>

@@ -59,8 +59,7 @@ export default function MentionsLegalesPage() {
 
         <Block id="cgv" title="Conditions générales de vente">
           <p>
-            [À COMPLÉTER] Conditions générales de vente : offres, prix, commande par ticket Discord, paiement
-            PayPal, livraison de la licence, droit de rétractation pour un contenu numérique, résiliation de
+            [À COMPLÉTER] Conditions générales de vente : offres, prix, commande par ticket Discord, paiement par carte via Stripe, livraison de la licence, droit de rétractation pour un contenu numérique, résiliation de
             l’offre mensuelle, responsabilité.
           </p>
         </Block>
@@ -72,7 +71,7 @@ export default function MentionsLegalesPage() {
             stockage de session de votre navigateur et disparaît à la fermeture de l’onglet.
           </p>
           <p>
-            [À COMPLÉTER] Données traitées lors d’une commande (Discord, PayPal, espace client), durée de
+            [À COMPLÉTER] Données traitées lors d’une commande (Discord, Stripe, espace client), durée de
             conservation et contact pour exercer vos droits.
           </p>
         </Block>
