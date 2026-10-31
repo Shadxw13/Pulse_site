@@ -1,0 +1,241 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"></head><body>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Barlow+Semi+Condensed:wght@500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F4F1}
+*{box-sizing:border-box}
+a{color:inherit;text-underline-offset:4px}
+.site{position:relative;background:#F5F4F1;color:#16151A;font:400 16px/1.6 'Instrument Sans',system-ui,sans-serif;overflow-x:clip}
+.site a.btn{text-decoration:none}
+.wrap{position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.sec{position:relative;padding:clamp(64px,8vw,112px) 0}
+.ey{display:inline-flex;align-items:center;gap:10px;font:500 13.5px/1.4 'Instrument Sans',system-ui,sans-serif;color:#67646C}
+.ey::before{content:"";width:18px;height:2px;border-radius:2px;background:#C8161D}
+.h1,.h2,.h3{margin:0;font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:700;text-wrap:balance;font-variation-settings:"opsz" 96}
+.h1{font-size:clamp(40px,5.8vw,76px);line-height:.98;letter-spacing:-.04em}
+.h2{font-size:clamp(30px,3.8vw,50px);line-height:1.02;letter-spacing:-.035em}
+.h3{font-size:21px;line-height:1.2;letter-spacing:-.02em}
+.lead{margin:0;font-size:17px;line-height:1.6;color:#3E3C43;max-width:58ch}
+.muted{color:#67646C}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:500 15px/1 'Instrument Sans',system-ui,sans-serif;border:1px solid #D3CFC7;background:#FFFFFF;color:#16151A;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.btn:hover{border-color:#16151A}
+.btn-sm{min-height:40px;padding:0 16px;font-size:14px}
+.btn-red{background:#C8161D;border-color:#C8161D;color:#FFFFFF}.btn-red:hover{background:#A91219;border-color:#A91219}
+.btn-ink{background:#16151A;border-color:#16151A;color:#FFFFFF}.btn-ink:hover{background:#2C2A31;border-color:#2C2A31}
+.btn-discord{background:#16151A;border-color:#16151A;color:#FFFFFF}.btn-discord:hover{background:#2C2A31;border-color:#2C2A31}
+.card{background:#FFFFFF;border:1px solid #E3E0DA;border-radius:18px}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:500;background:#ECEAE5;color:#3E3C43}
+.tag-red{background:#FBEAEA;color:#A8121A}
+.rise{animation:rise .8s cubic-bezier(.2,.75,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@supports (animation-timeline: view()){
+  .rv{animation:rvin linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  @keyframes rvin{from{opacity:0;transform:translateY(36px)}}
+}
+:focus-visible{outline:2px solid #16151A;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.rise,.rv{animation:none!important}}
+
+.frow{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.3fr);gap:24px;align-items:baseline;padding:26px 0;border-top:1px solid #E3E0DA}
+.frow .n{font:500 13px 'JetBrains Mono',monospace;color:#A8121A}
+.frow p{margin:0;color:#3E3C43;font-size:15.5px}
+.chip{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#FFFFFF;border:1px solid #E3E0DA;font-size:14.5px;color:#16151A}
+.tick{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.55;color:#3E3C43}
+.tick svg{color:#1D7A46}
+.ui{background:#17161B;border:1px solid #2E2C33;border-radius:14px;overflow:hidden;color:#EEECE8;box-shadow:0 30px 70px rgba(22,21,26,.18)}
+@media (max-width:760px){.frow{grid-template-columns:48px minmax(0,1fr)}.frow p{grid-column:2}}
+</style>
+
+
+<div class="site">
+  
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+
+
+<header style="position: sticky; top: 0; z-index: 20; background: rgba(245, 244, 241, 0.86); border-bottom: 1px solid #E3E0DA; font-family: 'Instrument Sans', system-ui, sans-serif; color: #16151A; backdrop-filter: blur(10px)">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px">
+    <a href="Site-Accueil.dc.html" style="display: flex; align-items: center; gap: 10px; color: #16151A; text-decoration: none">
+      <svg width="30" height="17" viewBox="240 350 560 324" aria-hidden="true"><path fill="#D91E25" d="M245 480C300 474 330 445 360 420C410 378 465 356 520 354L520 511C465 513 410 535 360 577C330 602 300 631 245 637ZM520 512C575 506 605 477 635 452C685 410 740 388 795 386L795 543C740 545 685 567 635 609C605 634 575 663 520 669Z"></path></svg>
+      <span style="font-family: 'Bricolage Grotesque', Arial, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.03em; line-height: 1">Pulse</span>
+    </a>
+
+    
+      <nav aria-label="Navigation principale" style="display: flex; align-items: center; gap: 28px">
+        
+          <a href="Site-Accueil.dc.html" aria-current="false" style="display: inline-flex; align-items: center; min-height: 44px; color: #57545C; font-size: 14.5px; font-weight: 500; text-decoration: none; box-shadow: none">Accueil</a>
+        
+          <a href="Site-Fonctionnalites.dc.html" aria-current="page" style="display: inline-flex; align-items: center; min-height: 44px; color: #16151A; font-size: 14.5px; font-weight: 600; text-decoration: none; box-shadow: inset 0 -1px 0 #16151A">Fonctionnalités</a>
+        
+          <a href="Site-Tarifs.dc.html" aria-current="false" style="display: inline-flex; align-items: center; min-height: 44px; color: #57545C; font-size: 14.5px; font-weight: 500; text-decoration: none; box-shadow: none">Tarifs</a>
+        
+          <a href="Site-Avis.dc.html" aria-current="false" style="display: inline-flex; align-items: center; min-height: 44px; color: #57545C; font-size: 14.5px; font-weight: 500; text-decoration: none; box-shadow: none">Avis</a>
+        
+          <a href="Site-FAQ.dc.html" aria-current="false" style="display: inline-flex; align-items: center; min-height: 44px; color: #57545C; font-size: 14.5px; font-weight: 500; text-decoration: none; box-shadow: none">FAQ</a>
+        
+          <a href="Site-Discord.dc.html" aria-current="false" style="display: inline-flex; align-items: center; min-height: 44px; color: #57545C; font-size: 14.5px; font-weight: 500; text-decoration: none; box-shadow: none">Discord</a>
+        
+      </nav>
+    
+
+    <div style="display: flex; align-items: center; gap: 8px">
+      
+        <a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; color: #16151A; font-size: 14px; text-decoration: none">Se connecter</a>
+      
+      <a href="Site-Tarifs.dc.html" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 999px; background: #16151A; color: #FFFFFF; font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap">Voir les offres</a>
+      
+    </div>
+  </div>
+
+  
+</header>
+
+
+  <section style="padding: clamp(56px, 8vw, 104px) 0 clamp(40px, 5vw, 64px)">
+    <div class="wrap rise" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px">
+      <div style="flex: 1 1 560px; display: flex; flex-direction: column; gap: 22px">
+        <span class="ey">Fonctionnalités</span>
+        <h1 class="h1" style="max-width: 14ch">Tout ce qu’il faut pour un serveur RP qui tient.</h1>
+      </div>
+      <div style="flex: 0 1 420px; display: flex; flex-direction: column; gap: 20px">
+        <p class="lead" style="font-size: 16.5px">Une base ESX Legacy reprise de zéro : des systèmes pensés pour le RP, une charge serveur minimale et un espace client pour tout régler sans toucher au code.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap"><a class="btn btn-red" href="Site-Tarifs.dc.html">Voir les tarifs</a><a class="btn" href="Site-Discord.dc.html#serveur-test">Tester en jeu</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top: 24px">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 28px">
+      <h2 class="h2 rv">Ce qui fait la différence en jeu.</h2>
+      <div style="border-bottom: 1px solid #E3E0DA">
+        
+          <div class="frow rv"><span class="n">01</span><h3 class="h3">Territoires</h3><p>Des quartiers que les gangs capturent en jeu, avec revenus, alertes et règles réglables depuis le panel.</p></div>
+        
+          <div class="frow rv"><span class="n">02</span><h3 class="h3">Optimisation</h3><p>Environ 0,30 ms côté serveur. Chaque ressource est mesurée avant d’entrer dans la base.</p></div>
+        
+          <div class="frow rv"><span class="n">03</span><h3 class="h3">ESX Legacy + ox_inventory</h3><p>Un socle connu de la scène, nettoyé et harmonisé, avec un inventaire moderne.</p></div>
+        
+          <div class="frow rv"><span class="n">04</span><h3 class="h3">Économie maîtrisée</h3><p>Salaires, taxes, prix et entreprises équilibrés pour que l’argent garde sa valeur.</p></div>
+        
+          <div class="frow rv"><span class="n">05</span><h3 class="h3">Logs Discord</h3><p>Les actions importantes remontent dans vos salons Discord pour garder un œil sur le serveur.</p></div>
+        
+          <div class="frow rv"><span class="n">06</span><h3 class="h3">Mises à jour</h3><p>Correctifs et nouveautés publiés régulièrement, téléchargeables depuis votre espace client.</p></div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background: #FFFFFF; border-top: 1px solid #E3E0DA; border-bottom: 1px solid #E3E0DA">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 64px); align-items: flex-start">
+      <div class="rv" style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px">
+        <span class="ey">Systèmes inclus</span>
+        <h2 class="h2">Déjà en place au premier lancement.</h2>
+        <p class="lead" style="font-size: 16px">La liste évolue avec les mises à jour, annoncées sur le Discord.</p>
+      </div>
+      <div class="rv" style="flex: 1.4 1 480px; display: flex; flex-wrap: wrap; gap: 10px">
+        <span class="chip" style="background: #F5F4F1">Territoires & gangs</span><span class="chip" style="background: #F5F4F1">Jobs légaux</span><span class="chip" style="background: #F5F4F1">Entreprises</span><span class="chip" style="background: #F5F4F1">Concessionnaire</span><span class="chip" style="background: #F5F4F1">Garages & fourrière</span><span class="chip" style="background: #F5F4F1">Banque</span><span class="chip" style="background: #F5F4F1">Immobilier</span><span class="chip" style="background: #F5F4F1">Police & LSPD</span><span class="chip" style="background: #F5F4F1">EMS</span><span class="chip" style="background: #F5F4F1">Téléphone</span><span class="chip" style="background: #F5F4F1">Facturation</span><span class="chip" style="background: #F5F4F1">Coffres & stockage</span><span class="chip" style="background: #F5F4F1">Création de personnage</span><span class="chip" style="background: #F5F4F1">Vêtements & barbier</span><span class="chip" style="background: #F5F4F1">Menu admin</span><span class="chip" style="background: #F5F4F1">Logs Discord</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="panel" class="sec">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: clamp(36px, 5vw, 64px); align-items: center">
+      <div class="rv" style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 18px">
+        <span class="ey">Espace client</span>
+        <h2 class="h2">Votre serveur se règle depuis le panel.</h2>
+        <p class="lead" style="font-size: 16px">Connexion avec Discord, puis tout est au même endroit.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px">
+          <div class="tick"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span>Licence, IP autorisée et téléchargements</span></div><div class="tick"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span>Économie, jobs et territoires réglables sans toucher au code</span></div><div class="tick"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span>Webhooks Discord et logs par catégorie</span></div><div class="tick"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span>Factures et historique des commandes</span></div><div class="tick"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span>Tickets de support suivis depuis le panel</span></div>
+        </div>
+        <div style="padding-top: 8px"><a class="btn btn-ink" href="Main.dc.html">Ouvrir l’espace client →</a></div>
+      </div>
+      <div class="rv" aria-hidden="true" style="flex: 1 1 460px; min-width: 0">
+        <div class="ui">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #2E2C33"><span style="display: flex; gap: 6px"><i style="width: 9px; height: 9px; border-radius: 50%; background: #3A383F"></i><i style="width: 9px; height: 9px; border-radius: 50%; background: #3A383F"></i><i style="width: 9px; height: 9px; border-radius: 50%; background: #3A383F"></i></span><span class="mono" style="font-size: 11.5px; color: #A3A0A8; margin-left: 8px">Mon serveur › Économie &amp; taxes</span></div>
+          <div style="padding: 18px; display: flex; flex-direction: column; gap: 10px">
+            
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #211F25; border: 1px solid #2E2C33">
+                <span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 13.5px; font-weight: 600">Taxe sur les ventes</span><span style="font-size: 12px; color: #A3A0A8">Appliquée aux entreprises</span></span>
+                <span class="mono" style="font-size: 13px; padding: 6px 10px; border-radius: 8px; background: #17161B; border: 1px solid #2E2C33">8 %</span>
+              </div>
+            
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #211F25; border: 1px solid #2E2C33">
+                <span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 13.5px; font-weight: 600">Salaire de base</span><span style="font-size: 12px; color: #A3A0A8">Toutes les 15 minutes</span></span>
+                <span class="mono" style="font-size: 13px; padding: 6px 10px; border-radius: 8px; background: #17161B; border: 1px solid #2E2C33">250 $</span>
+              </div>
+            
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #211F25; border: 1px solid #2E2C33">
+                <span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 13.5px; font-weight: 600">Revenu par territoire</span><span style="font-size: 12px; color: #A3A0A8">Par heure de contrôle</span></span>
+                <span class="mono" style="font-size: 13px; padding: 6px 10px; border-radius: 8px; background: #17161B; border: 1px solid #2E2C33">2 400 $</span>
+              </div>
+            
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #211F25; border: 1px solid #2E2C33">
+                <span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 13.5px; font-weight: 600">Délai entre deux captures</span><span style="font-size: 12px; color: #A3A0A8">Par zone</span></span>
+                <span class="mono" style="font-size: 13px; padding: 6px 10px; border-radius: 8px; background: #17161B; border: 1px solid #2E2C33">45 min</span>
+              </div>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 8px; padding-top: 4px"><span style="font-size: 12.5px; padding: 8px 12px; border-radius: 8px; border: 1px solid #2E2C33; color: #A3A0A8">Annuler</span><span style="font-size: 12.5px; font-weight: 600; padding: 8px 12px; border-radius: 8px; background: #C8161D; color: #FFFFFF">Enregistrer</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 0 0 clamp(64px, 8vw, 112px)">
+    <div class="wrap">
+      <div class="card rv" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(28px, 4vw, 44px)">
+        <div style="display: flex; flex-direction: column; gap: 10px; flex: 1 1 380px"><h2 class="h2" style="font-size: clamp(24px, 3vw, 34px)">Envie de la voir tourner ?</h2><p class="lead" style="font-size: 16px">Connectez-vous au serveur de test ou posez vos questions à l’équipe sur le Discord.</p></div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap"><a class="btn btn-discord" href="Site-Discord.dc.html">Rejoindre le Discord</a><a class="btn" href="Site-Tarifs.dc.html">Voir les tarifs</a></div>
+      </div>
+    </div>
+  </section>
+
+  
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+
+
+<footer style="position: relative; overflow: hidden; background: #EFEDE9; font-family: 'Instrument Sans', system-ui, sans-serif; color: #16151A">
+  <svg aria-hidden="true" viewBox="0 0 1440 60" preserveAspectRatio="none" style="display: block; width: 100%; height: 60px"><path d="M0 34 H610 L628 34 L640 12 L656 54 L670 22 L680 34 H1440" fill="none" stroke="#D9D5CE" stroke-width="1.5"></path><path d="M610 34 L628 34 L640 12 L656 54 L670 22 L680 34" fill="none" stroke="#C8161D" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+  <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 28px; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="display: flex; align-items: center; gap: 10px">
+          <svg width="30" height="17" viewBox="240 350 560 324" aria-hidden="true"><path fill="#D91E25" d="M245 480C300 474 330 445 360 420C410 378 465 356 520 354L520 511C465 513 410 535 360 577C330 602 300 631 245 637ZM520 512C575 506 605 477 635 452C685 410 740 388 795 386L795 543C740 545 685 567 635 609C605 634 575 663 520 669Z"></path></svg>
+          <span style="font-family: 'Bricolage Grotesque', Arial, sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.03em">Pulse</span>
+        </span>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5E5B63">Base FiveM pour serveurs RP.</p>
+      </div>
+      
+        <nav aria-label="Produit" style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 14px; font-weight: 600">Produit</span>
+          <a href="Site-Fonctionnalites.dc.html" style="color: #5E5B63; font-size: 14px; text-decoration: none">Fonctionnalités</a><a href="Site-Tarifs.dc.html" style="color: #5E5B63; font-size: 14px; text-decoration: none">Tarifs</a><a href="Site-Avis.dc.html" style="color: #5E5B63; font-size: 14px; text-decoration: none">Avis</a><a href="Site-FAQ.dc.html" style="color: #5E5B63; font-size: 14px; text-decoration: none">FAQ</a>
+        </nav>
+      
+        <nav aria-label="Espace client" style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 14px; font-weight: 600">Espace client</span>
+          <a href="Main.dc.html" style="color: #5E5B63; font-size: 14px; text-decoration: none">Se connecter</a><a href="Client-Licence.dc.html#telechargements" style="color: #5E5B63; font-size: 14px; text-decoration: none">Téléchargements</a><a href="Client-Support.dc.html" style="color: #5E5B63; font-size: 14px; text-decoration: none">Support</a>
+        </nav>
+      
+        <nav aria-label="Communauté" style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 14px; font-weight: 600">Communauté</span>
+          <a href="Site-Discord.dc.html" style="color: #5E5B63; font-size: 14px; text-decoration: none">Discord</a><a href="Site-Discord.dc.html#serveur-test" style="color: #5E5B63; font-size: 14px; text-decoration: none">Serveur de test</a><a href="Site-Discord.dc.html#youtube" style="color: #5E5B63; font-size: 14px; text-decoration: none">YouTube</a>
+        </nav>
+      
+        <nav aria-label="Légal" style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 14px; font-weight: 600">Légal</span>
+          <a href="#mentions" style="color: #5E5B63; font-size: 14px; text-decoration: none">Mentions légales</a><a href="#cgv" style="color: #5E5B63; font-size: 14px; text-decoration: none">CGV</a><a href="#confidentialite" style="color: #5E5B63; font-size: 14px; text-decoration: none">Confidentialité</a>
+        </nav>
+      
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 22px; border-top: 1px solid #D9D5CE; font-size: 13px; color: #5E5B63">
+      <span>© 2026 Pulse. Pulse n’est pas affilié à Rockstar Games ni à Cfx.re.</span>
+      <a href="Admin-Dashboard.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px; color: #5E5B63; font-size: 12.5px; text-decoration: none">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path></svg>
+        Administration
+      </a>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body></html>

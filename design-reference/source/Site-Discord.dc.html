@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Discord · Pulse</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Barlow+Semi+Condensed:wght@500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F4F1}
+*{box-sizing:border-box}
+a{color:inherit;text-underline-offset:4px}
+.site{position:relative;background:#F5F4F1;color:#16151A;font:400 16px/1.6 'Instrument Sans',system-ui,sans-serif;overflow-x:clip}
+.site a.btn{text-decoration:none}
+.wrap{position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.sec{position:relative;padding:clamp(64px,8vw,112px) 0}
+.ey{display:inline-flex;align-items:center;gap:10px;font:500 13.5px/1.4 'Instrument Sans',system-ui,sans-serif;color:#67646C}
+.ey::before{content:"";width:18px;height:2px;border-radius:2px;background:#C8161D}
+.h1,.h2,.h3{margin:0;font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:700;text-wrap:balance;font-variation-settings:"opsz" 96}
+.h1{font-size:clamp(40px,5.8vw,76px);line-height:.98;letter-spacing:-.04em}
+.h2{font-size:clamp(30px,3.8vw,50px);line-height:1.02;letter-spacing:-.035em}
+.h3{font-size:21px;line-height:1.2;letter-spacing:-.02em}
+.lead{margin:0;font-size:17px;line-height:1.6;color:#3E3C43;max-width:58ch}
+.muted{color:#67646C}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:500 15px/1 'Instrument Sans',system-ui,sans-serif;border:1px solid #D3CFC7;background:#FFFFFF;color:#16151A;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.btn:hover{border-color:#16151A}
+.btn-sm{min-height:40px;padding:0 16px;font-size:14px}
+.btn-red{background:#C8161D;border-color:#C8161D;color:#FFFFFF}.btn-red:hover{background:#A91219;border-color:#A91219}
+.btn-ink{background:#16151A;border-color:#16151A;color:#FFFFFF}.btn-ink:hover{background:#2C2A31;border-color:#2C2A31}
+.btn-discord{background:#16151A;border-color:#16151A;color:#FFFFFF}.btn-discord:hover{background:#2C2A31;border-color:#2C2A31}
+.card{background:#FFFFFF;border:1px solid #E3E0DA;border-radius:18px}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:500;background:#ECEAE5;color:#3E3C43}
+.tag-red{background:#FBEAEA;color:#A8121A}
+.rise{animation:rise .8s cubic-bezier(.2,.75,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@supports (animation-timeline: view()){
+  .rv{animation:rvin linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  @keyframes rvin{from{opacity:0;transform:translateY(36px)}}
+}
+:focus-visible{outline:2px solid #16151A;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.rise,.rv{animation:none!important}}
+
+.why{display:flex;flex-direction:column;gap:8px;padding:24px;border-radius:16px;background:#FFFFFF;border:1px solid #E3E0DA}
+.why b{font-size:17px;font-weight:600}
+.why span{font-size:14.5px;line-height:1.6;color:#3E3C43}
+.chan{display:flex;align-items:center;gap:8px;min-height:32px;padding:0 10px;border-radius:6px;font-size:14px}
+</style>
+</helmet>
+<div class="site">
+  <dc-import name="SiteHeader" active="discord" theme="light" hint-size="100%,69px"></dc-import>
+
+  <section style="padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 8vw, 104px)">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: clamp(36px, 5vw, 64px); align-items: center">
+      <div class="rise" style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 20px">
+        <span class="ey">Communauté</span>
+        <h1 class="h1">Tout se passe sur le Discord.</h1>
+        <p class="lead">Commandes, support, mises à jour et entraide entre créateurs de serveurs : rejoignez Pulse - Development.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap"><a class="btn btn-discord" href="https://discord.gg/pulsedev">Rejoindre le serveur</a><a class="btn" href="#serveur-test">Serveur de test</a></div>
+      </div>
+      <div class="rise" aria-hidden="true" style="flex: 1 1 440px; min-width: 0; display: flex; justify-content: center; animation-delay: .12s">
+        <div style="width: 100%; max-width: 500px; border-radius: 14px; overflow: hidden; background: #2B2D31; box-shadow: 0 30px 70px rgba(22,21,26,.18)">
+          <div style="height: 96px; background: linear-gradient(120deg, #8E1016, #C8161D); position: relative"><svg width="120" height="70" viewBox="240 350 560 324" style="position: absolute; right: 18px; bottom: 12px; opacity: 0.22"><path fill="#000000" d="M245 480C300 474 330 445 360 420C410 378 465 356 520 354L520 511C465 513 410 535 360 577C330 602 300 631 245 637ZM520 512C575 506 605 477 635 452C685 410 740 388 795 386L795 543C740 545 685 567 635 609C605 634 575 663 520 669Z"></path></svg></div>
+          <div style="padding: 0 20px 20px; position: relative">
+            <div style="width: 72px; height: 72px; margin-top: -36px; border-radius: 14px; background: #111013; border: 5px solid #2B2D31; display: flex; align-items: center; justify-content: center"><svg width="38" height="22" viewBox="240 350 560 324"><path fill="#E0353B" d="M245 480C300 474 330 445 360 420C410 378 465 356 520 354L520 511C465 513 410 535 360 577C330 602 300 631 245 637ZM520 512C575 506 605 477 635 452C685 410 740 388 795 386L795 543C740 545 685 567 635 609C605 634 575 663 520 669Z"></path></svg></div>
+            <div style="padding-top: 12px; display: flex; flex-direction: column; gap: 6px">
+              <span style="font-size: 20px; font-weight: 700; color: #F2F3F5">Pulse - Development</span>
+              <span style="display: flex; gap: 16px; font-size: 13.5px; color: #B5BAC1"><span style="display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #23A55A"></span>{{online}} en ligne</span><span style="display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #80848E"></span>3 549 membres</span></span>
+            </div>
+            <div style="margin-top: 16px; padding: 10px; border-radius: 10px; background: #1E1F22; display: flex; flex-direction: column; gap: 2px">
+              <span style="padding: 4px 10px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; color: #949BA4">BOUTIQUE</span>
+              <sc-for list="{{channels}}" as="c" hint-placeholder-count="6"><span class="chan" style="background: {{c.bg}}; color: {{c.color}}"><span style="font-size: 17px; color: #80848E">#</span>{{c.name}}</span></sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background: #FFFFFF; border-top: 1px solid #E3E0DA; border-bottom: 1px solid #E3E0DA">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 36px">
+      <div class="rv" style="display: flex; flex-direction: column; gap: 12px"><span class="ey">Sur le serveur</span><h2 class="h2">Ce que vous y trouvez.</h2></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px">
+        <div class="why rv" style="background: #F5F4F1"><b>Boutique et tickets</b><span>Commandez votre formule et suivez votre commande dans un ticket privé.</span></div>
+        <div class="why rv" style="background: #F5F4F1"><b>Support</b><span>Une réponse immédiate de l’assistant, puis l’équipe si besoin. Prioritaire en Lifetime.</span></div>
+        <div class="why rv" style="background: #F5F4F1"><b>Mises à jour</b><span>Chaque nouvelle version est annoncée avec son changelog.</span></div>
+        <div class="why rv" style="background: #F5F4F1"><b>Entraide</b><span>Échangez avec les autres clients et partagez vos configurations.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="serveur-test" class="sec">
+    <div class="wrap">
+      <div class="rv" style="display: flex; flex-wrap: wrap; gap: clamp(28px, 4vw, 48px); align-items: center; padding: clamp(28px, 4vw, 44px); border-radius: 22px; background: #17161B; color: #EEECE8">
+        <div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 14px"><span class="ey" style="color: #A3A0A8">Serveur de test</span><h2 class="h2">Essayez la base en jeu.</h2><p class="lead" style="font-size: 16px; color: #A3A0A8">Ouvrez FiveM, appuyez sur F8 et collez la commande. Le serveur de test tourne avec la dernière version de Pulse.</p></div>
+        <div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 12px">
+          <div style="display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 20px; border-radius: 999px; background: #211F25; border: 1px solid #2E2C33"><span class="mono" style="flex: 1; min-width: 0; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">connect 51.254.128.242:30120</span><button type="button" class="btn btn-red btn-sm" onClick="{{copy}}">{{copyLabel}}</button></div>
+          <div style="display: flex; gap: 18px; flex-wrap: wrap; font-size: 13.5px; color: #A3A0A8; padding-left: 20px"><span>Ouvert à tous</span><span>ESX Legacy · ox_inventory</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="youtube" style="padding: 0 0 clamp(64px, 8vw, 104px)">
+    <div class="wrap"><div class="card rv" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 28px 30px"><div style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 360px"><h2 class="h2" style="font-size: clamp(22px, 3vw, 30px)">Les vidéos de présentation</h2><p class="lead" style="font-size: 15.5px">Démonstrations des systèmes et tutoriels d’installation.</p></div><a class="btn" href="#youtube">Voir la chaîne YouTube ↗</a></div></div>
+  </section>
+
+  <dc-import name="SiteFooter" theme="light" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { copied: false }; }
+  componentWillUnmount() { clearTimeout(this.t); }
+  renderVals() {
+    const names = ['annonces', 'boutique', 'ouvrir-un-ticket', 'avis', 'support', 'changelog'];
+    return {
+      online: '412',
+      channels: names.map((name) => ({ name, bg: name === 'ouvrir-un-ticket' ? '#35373C' : 'transparent', color: name === 'ouvrir-un-ticket' ? '#F2F3F5' : '#949BA4' })),
+      copyLabel: this.state.copied ? 'Copié' : 'Copier',
+      copy: () => {
+        try { navigator.clipboard && navigator.clipboard.writeText('connect 51.254.128.242:30120').catch(() => {}); } catch (e) {}
+        this.setState({ copied: true });
+        clearTimeout(this.t);
+        this.t = setTimeout(() => this.setState({ copied: false }), 1800);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

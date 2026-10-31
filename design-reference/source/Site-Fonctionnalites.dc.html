@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Fonctionnalités · Pulse</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Barlow+Semi+Condensed:wght@500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F4F1}
+*{box-sizing:border-box}
+a{color:inherit;text-underline-offset:4px}
+.site{position:relative;background:#F5F4F1;color:#16151A;font:400 16px/1.6 'Instrument Sans',system-ui,sans-serif;overflow-x:clip}
+.site a.btn{text-decoration:none}
+.wrap{position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.sec{position:relative;padding:clamp(64px,8vw,112px) 0}
+.ey{display:inline-flex;align-items:center;gap:10px;font:500 13.5px/1.4 'Instrument Sans',system-ui,sans-serif;color:#67646C}
+.ey::before{content:"";width:18px;height:2px;border-radius:2px;background:#C8161D}
+.h1,.h2,.h3{margin:0;font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:700;text-wrap:balance;font-variation-settings:"opsz" 96}
+.h1{font-size:clamp(40px,5.8vw,76px);line-height:.98;letter-spacing:-.04em}
+.h2{font-size:clamp(30px,3.8vw,50px);line-height:1.02;letter-spacing:-.035em}
+.h3{font-size:21px;line-height:1.2;letter-spacing:-.02em}
+.lead{margin:0;font-size:17px;line-height:1.6;color:#3E3C43;max-width:58ch}
+.muted{color:#67646C}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:500 15px/1 'Instrument Sans',system-ui,sans-serif;border:1px solid #D3CFC7;background:#FFFFFF;color:#16151A;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.btn:hover{border-color:#16151A}
+.btn-sm{min-height:40px;padding:0 16px;font-size:14px}
+.btn-red{background:#C8161D;border-color:#C8161D;color:#FFFFFF}.btn-red:hover{background:#A91219;border-color:#A91219}
+.btn-ink{background:#16151A;border-color:#16151A;color:#FFFFFF}.btn-ink:hover{background:#2C2A31;border-color:#2C2A31}
+.btn-discord{background:#16151A;border-color:#16151A;color:#FFFFFF}.btn-discord:hover{background:#2C2A31;border-color:#2C2A31}
+.card{background:#FFFFFF;border:1px solid #E3E0DA;border-radius:18px}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:500;background:#ECEAE5;color:#3E3C43}
+.tag-red{background:#FBEAEA;color:#A8121A}
+.rise{animation:rise .8s cubic-bezier(.2,.75,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@supports (animation-timeline: view()){
+  .rv{animation:rvin linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  @keyframes rvin{from{opacity:0;transform:translateY(36px)}}
+}
+:focus-visible{outline:2px solid #16151A;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.rise,.rv{animation:none!important}}
+
+.frow{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1.3fr);gap:24px;align-items:baseline;padding:26px 0;border-top:1px solid #E3E0DA}
+.frow .n{font:500 13px 'JetBrains Mono',monospace;color:#A8121A}
+.frow p{margin:0;color:#3E3C43;font-size:15.5px}
+.chip{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#FFFFFF;border:1px solid #E3E0DA;font-size:14.5px;color:#16151A}
+.tick{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.55;color:#3E3C43}
+.tick svg{color:#1D7A46}
+.ui{background:#17161B;border:1px solid #2E2C33;border-radius:14px;overflow:hidden;color:#EEECE8;box-shadow:0 30px 70px rgba(22,21,26,.18)}
+@media (max-width:760px){.frow{grid-template-columns:48px minmax(0,1fr)}.frow p{grid-column:2}}
+</style>
+</helmet>
+<div class="site">
+  <dc-import name="SiteHeader" active="fonctionnalites" theme="light" hint-size="100%,69px"></dc-import>
+
+  <section style="padding: clamp(56px, 8vw, 104px) 0 clamp(40px, 5vw, 64px)">
+    <div class="wrap rise" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px">
+      <div style="flex: 1 1 560px; display: flex; flex-direction: column; gap: 22px">
+        <span class="ey">Fonctionnalités</span>
+        <h1 class="h1" style="max-width: 14ch">Tout ce qu’il faut pour un serveur RP qui tient.</h1>
+      </div>
+      <div style="flex: 0 1 420px; display: flex; flex-direction: column; gap: 20px">
+        <p class="lead" style="font-size: 16.5px">Une base ESX Legacy reprise de zéro : des systèmes pensés pour le RP, une charge serveur minimale et un espace client pour tout régler sans toucher au code.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap"><a class="btn btn-red" href="Site-Tarifs.dc.html">Voir les tarifs</a><a class="btn" href="Site-Discord.dc.html#serveur-test">Tester en jeu</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top: 24px">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 28px">
+      <h2 class="h2 rv">Ce qui fait la différence en jeu.</h2>
+      <div style="border-bottom: 1px solid #E3E0DA">
+        <sc-for list="{{features}}" as="f" hint-placeholder-count="6">
+          <div class="frow rv"><span class="n">{{f.n}}</span><h3 class="h3">{{f.title}}</h3><p>{{f.text}}</p></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background: #FFFFFF; border-top: 1px solid #E3E0DA; border-bottom: 1px solid #E3E0DA">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 64px); align-items: flex-start">
+      <div class="rv" style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px">
+        <span class="ey">Systèmes inclus</span>
+        <h2 class="h2">Déjà en place au premier lancement.</h2>
+        <p class="lead" style="font-size: 16px">La liste évolue avec les mises à jour, annoncées sur le Discord.</p>
+      </div>
+      <div class="rv" style="flex: 1.4 1 480px; display: flex; flex-wrap: wrap; gap: 10px">
+        <sc-for list="{{systems}}" as="s" hint-placeholder-count="16"><span class="chip" style="background: #F5F4F1">{{s}}</span></sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="panel" class="sec">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: clamp(36px, 5vw, 64px); align-items: center">
+      <div class="rv" style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 18px">
+        <span class="ey">Espace client</span>
+        <h2 class="h2">Votre serveur se règle depuis le panel.</h2>
+        <p class="lead" style="font-size: 16px">Connexion avec Discord, puis tout est au même endroit.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px">
+          <sc-for list="{{panelPoints}}" as="pt" hint-placeholder-count="5"><div class="tick"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span>{{pt}}</span></div></sc-for>
+        </div>
+        <div style="padding-top: 8px"><a class="btn btn-ink" href="Main.dc.html">Ouvrir l’espace client →</a></div>
+      </div>
+      <div class="rv" aria-hidden="true" style="flex: 1 1 460px; min-width: 0">
+        <div class="ui">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #2E2C33"><span style="display: flex; gap: 6px"><i style="width: 9px; height: 9px; border-radius: 50%; background: #3A383F"></i><i style="width: 9px; height: 9px; border-radius: 50%; background: #3A383F"></i><i style="width: 9px; height: 9px; border-radius: 50%; background: #3A383F"></i></span><span class="mono" style="font-size: 11.5px; color: #A3A0A8; margin-left: 8px">Mon serveur › Économie &amp; taxes</span></div>
+          <div style="padding: 18px; display: flex; flex-direction: column; gap: 10px">
+            <sc-for list="{{panelRows}}" as="r" hint-placeholder-count="4">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #211F25; border: 1px solid #2E2C33">
+                <span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 13.5px; font-weight: 600">{{r.label}}</span><span style="font-size: 12px; color: #A3A0A8">{{r.hint}}</span></span>
+                <span class="mono" style="font-size: 13px; padding: 6px 10px; border-radius: 8px; background: #17161B; border: 1px solid #2E2C33">{{r.value}}</span>
+              </div>
+            </sc-for>
+            <div style="display: flex; justify-content: flex-end; gap: 8px; padding-top: 4px"><span style="font-size: 12.5px; padding: 8px 12px; border-radius: 8px; border: 1px solid #2E2C33; color: #A3A0A8">Annuler</span><span style="font-size: 12.5px; font-weight: 600; padding: 8px 12px; border-radius: 8px; background: #C8161D; color: #FFFFFF">Enregistrer</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 0 0 clamp(64px, 8vw, 112px)">
+    <div class="wrap">
+      <div class="card rv" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(28px, 4vw, 44px)">
+        <div style="display: flex; flex-direction: column; gap: 10px; flex: 1 1 380px"><h2 class="h2" style="font-size: clamp(24px, 3vw, 34px)">Envie de la voir tourner ?</h2><p class="lead" style="font-size: 16px">Connectez-vous au serveur de test ou posez vos questions à l’équipe sur le Discord.</p></div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap"><a class="btn btn-discord" href="Site-Discord.dc.html">Rejoindre le Discord</a><a class="btn" href="Site-Tarifs.dc.html">Voir les tarifs</a></div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" theme="light" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const F = [
+      ['Territoires', 'Des quartiers que les gangs capturent en jeu, avec revenus, alertes et règles réglables depuis le panel.'],
+      ['Optimisation', 'Environ 0,30 ms côté serveur. Chaque ressource est mesurée avant d’entrer dans la base.'],
+      ['ESX Legacy + ox_inventory', 'Un socle connu de la scène, nettoyé et harmonisé, avec un inventaire moderne.'],
+      ['Économie maîtrisée', 'Salaires, taxes, prix et entreprises équilibrés pour que l’argent garde sa valeur.'],
+      ['Logs Discord', 'Les actions importantes remontent dans vos salons Discord pour garder un œil sur le serveur.'],
+      ['Mises à jour', 'Correctifs et nouveautés publiés régulièrement, téléchargeables depuis votre espace client.']
+    ];
+    return {
+      features: F.map(([title, text], i) => ({ n: String(i + 1).padStart(2, '0'), title, text })),
+      systems: ['Territoires & gangs', 'Jobs légaux', 'Entreprises', 'Concessionnaire', 'Garages & fourrière', 'Banque', 'Immobilier', 'Police & LSPD', 'EMS', 'Téléphone', 'Facturation', 'Coffres & stockage', 'Création de personnage', 'Vêtements & barbier', 'Menu admin', 'Logs Discord'],
+      panelPoints: ['Licence, IP autorisée et téléchargements', 'Économie, jobs et territoires réglables sans toucher au code', 'Webhooks Discord et logs par catégorie', 'Factures et historique des commandes', 'Tickets de support suivis depuis le panel'],
+      panelRows: [
+        { label: 'Taxe sur les ventes', hint: 'Appliquée aux entreprises', value: '8 %' },
+        { label: 'Salaire de base', hint: 'Toutes les 15 minutes', value: '250 $' },
+        { label: 'Revenu par territoire', hint: 'Par heure de contrôle', value: '2 400 $' },
+        { label: 'Délai entre deux captures', hint: 'Par zone', value: '45 min' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Tarifs · Pulse</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Barlow+Semi+Condensed:wght@500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F4F1}
+*{box-sizing:border-box}
+a{color:inherit;text-underline-offset:4px}
+.site{position:relative;background:#F5F4F1;color:#16151A;font:400 16px/1.6 'Instrument Sans',system-ui,sans-serif;overflow-x:clip}
+.site a.btn{text-decoration:none}
+.wrap{position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.sec{position:relative;padding:clamp(64px,8vw,112px) 0}
+.ey{display:inline-flex;align-items:center;gap:10px;font:500 13.5px/1.4 'Instrument Sans',system-ui,sans-serif;color:#67646C}
+.ey::before{content:"";width:18px;height:2px;border-radius:2px;background:#C8161D}
+.h1,.h2,.h3{margin:0;font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:700;text-wrap:balance;font-variation-settings:"opsz" 96}
+.h1{font-size:clamp(40px,5.8vw,76px);line-height:.98;letter-spacing:-.04em}
+.h2{font-size:clamp(30px,3.8vw,50px);line-height:1.02;letter-spacing:-.035em}
+.h3{font-size:21px;line-height:1.2;letter-spacing:-.02em}
+.lead{margin:0;font-size:17px;line-height:1.6;color:#3E3C43;max-width:58ch}
+.muted{color:#67646C}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:500 15px/1 'Instrument Sans',system-ui,sans-serif;border:1px solid #D3CFC7;background:#FFFFFF;color:#16151A;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.btn:hover{border-color:#16151A}
+.btn-sm{min-height:40px;padding:0 16px;font-size:14px}
+.btn-red{background:#C8161D;border-color:#C8161D;color:#FFFFFF}.btn-red:hover{background:#A91219;border-color:#A91219}
+.btn-ink{background:#16151A;border-color:#16151A;color:#FFFFFF}.btn-ink:hover{background:#2C2A31;border-color:#2C2A31}
+.btn-discord{background:#16151A;border-color:#16151A;color:#FFFFFF}.btn-discord:hover{background:#2C2A31;border-color:#2C2A31}
+.card{background:#FFFFFF;border:1px solid #E3E0DA;border-radius:18px}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:500;background:#ECEAE5;color:#3E3C43}
+.tag-red{background:#FBEAEA;color:#A8121A}
+.rise{animation:rise .8s cubic-bezier(.2,.75,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@supports (animation-timeline: view()){
+  .rv{animation:rvin linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  @keyframes rvin{from{opacity:0;transform:translateY(36px)}}
+}
+:focus-visible{outline:2px solid #16151A;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.rise,.rv{animation:none!important}}
+
+.offer{position:relative;display:flex;flex-direction:column;gap:22px;padding:30px;border-radius:20px;background:#FFFFFF;border:1px solid #E3E0DA}
+.offer.hot{background:#17161B;border-color:#17161B;color:#EEECE8}
+.ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.ul li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.55}
+.ul b{font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
+.stp{position:relative;display:flex;flex-direction:column;gap:10px;padding:0 24px 0 0}
+.stp .num{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;background:#FFFFFF;border:1px solid #D3CFC7;display:flex;align-items:center;justify-content:center;font:500 13px 'JetBrains Mono',monospace;color:#16151A}
+.stp::before{content:"";position:absolute;left:40px;right:0;top:20px;height:1px;background:#D3CFC7}
+.stp:last-child::before{display:none}
+.qa{padding:22px 24px;border-radius:16px;background:#FFFFFF;border:1px solid #E3E0DA;display:flex;flex-direction:column;gap:8px}
+.qa h3{margin:0;font-size:16.5px;font-weight:600}
+.qa p{margin:0;font-size:15px;line-height:1.6;color:#3E3C43}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr;gap:28px}.stp::before{display:none}}
+</style>
+</helmet>
+<div class="site">
+  <dc-import name="SiteHeader" active="tarifs" theme="light" hint-size="100%,69px"></dc-import>
+
+  <section style="padding: clamp(56px, 8vw, 104px) 0 clamp(40px, 5vw, 56px)">
+    <div class="wrap rise" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px">
+      <span class="ey">Tarifs</span>
+      <h1 class="h1" style="max-width: 16ch">Une formule pour chaque projet.</h1>
+      <p class="lead">Toutes les formules incluent la base complète et l’espace client. La commande se passe sur le Discord, par ticket.</p>
+    </div>
+  </section>
+
+  <section style="padding: 0 0 clamp(64px, 8vw, 104px)">
+    <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch">
+      <sc-for list="{{offers}}" as="o" hint-placeholder-count="3">
+        <div class="{{o.cls}}">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <span style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><span style="font-size: 13.5px; color: {{o.sub}}">{{o.tag}}</span><sc-if value="{{o.badge}}" hint-placeholder-val="{{ false }}"><span style="padding: 4px 10px; border-radius: 999px; background: #C8161D; color: #FFFFFF; font-size: 12px; font-weight: 500">Recommandée</span></sc-if></span>
+            <span style="font-family: 'Bricolage Grotesque', Arial, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em">{{o.name}}</span>
+            <span style="font-size: 14.5px; line-height: 1.55; color: {{o.sub}}">{{o.desc}}</span>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 8px; padding-bottom: 20px; border-bottom: 1px solid {{o.line}}">
+            <span style="font-family: 'Bricolage Grotesque', Arial, sans-serif; font-weight: 700; font-size: 54px; line-height: 1; letter-spacing: -0.04em">{{o.price}}</span>
+            <span style="font-size: 15px; color: {{o.sub}}">{{o.per}}</span>
+          </div>
+          <ul class="ul">
+            <sc-for list="{{o.items}}" as="it" hint-placeholder-count="4"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span>{{it.a}} <b>{{it.c}}</b> {{it.b}}</span></li></sc-for>
+          </ul>
+          <a class="{{o.btn}}" href="Site-Discord.dc.html" style="margin-top: auto">Commander sur Discord</a>
+        </div>
+      </sc-for>
+    </div>
+    <div class="wrap" style="padding-top: 22px"><div style="display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: center; font-size: 13.5px; color: #67646C"><span>Paiement PayPal, validé par l’équipe</span><span>Licence envoyée en message privé</span><span>TVA non applicable, art. 293 B du CGI</span></div></div>
+  </section>
+
+  <section class="sec" style="background: #FFFFFF; border-top: 1px solid #E3E0DA; border-bottom: 1px solid #E3E0DA">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 44px">
+      <div class="rv" style="display: flex; flex-direction: column; gap: 14px"><span class="ey">Comment commander</span><h2 class="h2">Quatre étapes, tout sur Discord.</h2></div>
+      <div class="steps rv">
+        <sc-for list="{{steps}}" as="s" hint-placeholder-count="4"><div class="stp"><span class="num">{{s.n}}</span><span style="font-size: 17px; font-weight: 600; margin-top: 6px">{{s.title}}</span><span style="font-size: 14.5px; line-height: 1.6; color: #3E3C43">{{s.text}}</span></div></sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 64px); align-items: flex-start">
+      <div class="rv" style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 14px"><span class="ey">Paiement</span><h2 class="h2">Vos questions avant de commander.</h2><div style="margin-top: 6px"><a class="btn btn-sm" href="Site-FAQ.dc.html">Toute la FAQ →</a></div></div>
+      <div style="flex: 1.5 1 480px; display: flex; flex-direction: column; gap: 10px">
+        <sc-for list="{{faq}}" as="q" hint-placeholder-count="4"><div class="qa rv"><h3>{{q.q}}</h3><p>{{q.a}}</p></div></sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" theme="light" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3100}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const item = (a, c, b) => ({ a, c, b });
+    const light = { cls: 'offer', sub: '#67646C', line: '#E3E0DA', btn: 'btn' };
+    const dark = { cls: 'offer hot', sub: '#A3A0A8', line: '#2E2C33', btn: 'btn btn-red' };
+    return {
+      offers: [
+        Object.assign({}, light, { badge: false, tag: 'Mensuelle', name: 'Base Pulse', price: '25 €', per: '/ 30 jours', desc: 'Pour lancer votre serveur sans gros investissement de départ.', items: [item('Accès à la base pendant', '30 jours', 'renouvelables'), item('Mises à jour incluses pendant', 'l’abonnement', ''), item('Support', 'standard', 'par ticket'), item('Espace client et', 'panel', 'de configuration')] }),
+        Object.assign({}, dark, { badge: true, tag: 'Lifetime', name: 'Base Pulse Lifetime', price: '150 €', per: 'une fois', desc: 'Un seul paiement, la base et ses mises à jour pour toujours.', items: [item('Accès à la base', 'à vie', ''), item('Mises à jour', 'à vie', 'incluses'), item('Support', 'premium', 'prioritaire'), item('Espace client et', 'panel', 'de configuration')] }),
+        Object.assign({}, light, { badge: false, tag: 'Unlock', name: 'Pulse Unlock', price: '300 €', per: 'une fois', desc: 'Pour les équipes qui veulent modifier la base en profondeur.', items: [item('Tout le contenu de la', 'Lifetime', ''), item('Intégralité du', 'code source', 'accessible'), item('Support', 'premium', 'prioritaire'), item('Licence', 'à vie', 'pour un serveur')] })
+      ],
+      steps: [
+        { n: '01', title: 'Rejoignez le Discord', text: 'Passez sur le serveur Pulse - Development et lisez le salon boutique.' },
+        { n: '02', title: 'Ouvrez un ticket', text: 'Choisissez votre formule. Un membre de l’équipe vous répond dans le ticket.' },
+        { n: '03', title: 'Payez par PayPal', text: 'Vous recevez le lien de paiement. L’équipe valide le paiement à réception.' },
+        { n: '04', title: 'Recevez votre licence', text: 'La clé arrive en message privé. Les fichiers sont dans votre espace client.' }
+      ],
+      faq: [
+        { q: 'Pourquoi passer par un ticket ?', a: 'Chaque commande est suivie par une personne de l’équipe. Vous pouvez poser vos questions avant de payer, et tout reste écrit dans le ticket.' },
+        { q: 'Quels moyens de paiement acceptez-vous ?', a: 'PayPal pour l’instant. Le paiement par carte arrivera plus tard.' },
+        { q: 'Comment passer de la mensuelle à la Lifetime ?', a: 'Ouvrez un ticket et nous ajustons l’offre. Le passage reste possible à tout moment.' },
+        { q: 'Recevrai-je une facture ?', a: 'Oui, chaque commande validée donne lieu à une facture, disponible dans votre espace client.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

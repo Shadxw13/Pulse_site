@@ -1,26 +1,448 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ───────────── Jetons (thème clair uniquement) ───────────── */
+@theme {
+  --color-*: initial;
+  --color-bg: #f5f4f1;
+  --color-bg-2: #efede9;
+  --color-surf: #ffffff;
+  --color-sunk: #eceae5;
+  --color-line: #e3e0da;
+  --color-line-2: #d3cfc7;
+  --color-line-3: #d9d5ce;
+  --color-ink: #16151a;
+  --color-ink-hover: #2c2a31;
+  --color-ink-2: #3e3c43;
+  --color-muted: #67646c;
+  --color-muted-2: #5e5b63;
+  --color-red: #c8161d;
+  --color-red-hover: #a91219;
+  --color-red-soft: #fbeaea;
+  --color-red-text: #a8121a;
+  --color-red-on-dark: #e0353b;
+  --color-dark: #17161b;
+  --color-dark-2: #211f25;
+  --color-dark-line: #2e2c33;
+  --color-dark-deep: #111014;
+  --color-dark-edge: #0f0e12;
+  --color-dark-text: #eeece8;
+  --color-dark-muted: #a3a0a8;
+  --color-dark-dim: #4a4850;
+  --color-ok: #6fcf97;
+  --color-warn: #e8b04b;
+  --color-green: #1d7a46;
+  --color-star: #b57f00;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-display: var(--font-bricolage), Arial, sans-serif;
+  --font-sans: var(--font-instrument), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --ease-pulse: cubic-bezier(0.2, 0.75, 0.2, 1);
+  --shadow-float: 0 30px 70px rgba(22, 21, 26, 0.18);
+  --shadow-soft: 0 30px 70px rgba(22, 21, 26, 0.1);
+
+  --breakpoint-md: 860px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ───────────── Base ───────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    background: var(--color-bg);
+    -webkit-text-size-adjust: 100%;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font: 400 16px/1.6 var(--font-sans);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+    text-underline-offset: 4px;
+  }
+  button {
+    font: inherit;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-red);
+    color: var(--color-white);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ───────────── Typographie ───────────── */
+@layer components {
+  .wrap {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 40px);
+  }
+  .sec {
+    position: relative;
+    padding: clamp(64px, 8vw, 112px) 0;
+  }
+  .sec-alt {
+    background: var(--color-surf);
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .h1,
+  .h2,
+  .h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    font-variation-settings: 'opsz' 96;
+  }
+  .h1 {
+    font-size: clamp(40px, 5.8vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+  .h2 {
+    font-size: clamp(30px, 3.8vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+  .h3 {
+    font-size: 21px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-ink-2);
+    max-width: 58ch;
+  }
+  .mono {
+    font-family: var(--font-mono);
+  }
+  .display {
+    font-family: var(--font-display);
+    font-variation-settings: 'opsz' 96;
+  }
+}
+
+/* ───────────── Interfaces de jeu (surfaces sombres) ───────────── */
+@layer components {
+  .ui {
+    background: var(--color-dark);
+    border: 1px solid var(--color-dark-line);
+    border-radius: 12px;
+    overflow: hidden;
+    color: var(--color-dark-text);
+    font-size: 12.5px;
+  }
+  .ui-h {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-dark-line);
+  }
+  .ui-h b {
+    font: 700 13.5px var(--font-display);
+  }
+  .ui-b {
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .ui-r {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 9px;
+    border-radius: 7px;
+    background: var(--color-dark-2);
+  }
+  .ui-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    border-radius: 7px;
+    background: var(--color-red);
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .tc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4px;
+    padding: 14px;
+    border-radius: 14px;
+    overflow: hidden;
+    color: var(--color-white);
+  }
+  .tc b {
+    font: 700 18px/1.1 var(--font-display);
+  }
+  .tc small {
+    font-size: 11.5px;
+    opacity: 0.85;
+  }
+  @media (max-width: 859px) {
+    .tc b {
+      font-size: 14px;
+    }
+    .tc small {
+      display: none;
+    }
+  }
+}
+
+/* ───────────── Rideau d’ouverture (CSS pur, pas de JS requis) ───────────── */
+@layer components {
+  .intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+  }
+  html[data-intro='skip'] .intro {
+    display: none;
+  }
+  .intro .layer {
+    position: absolute;
+    inset: 0;
+  }
+  .intro .l-red {
+    background: var(--color-red-hover);
+    animation: intro-drop 1s cubic-bezier(0.76, 0, 0.24, 1) 2.3s forwards;
+  }
+  .intro .l-ink {
+    background: var(--color-ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    animation: intro-drop 1s cubic-bezier(0.76, 0, 0.24, 1) 2.15s forwards;
+  }
+  .intro .word {
+    display: flex;
+    font: 800 clamp(88px, 19vw, 232px) / 0.9 var(--font-display);
+    letter-spacing: -0.055em;
+    color: var(--color-bg);
+    font-variation-settings: 'opsz' 96;
+  }
+  .intro .m {
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.04em 0.012em 0.1em;
+  }
+  .intro .c {
+    display: inline-block;
+    transform: translateY(105%);
+    animation:
+      intro-up 0.8s var(--ease-pulse) forwards,
+      intro-away 0.55s cubic-bezier(0.6, 0, 0.4, 1) 1.75s forwards;
+  }
+  .intro .isub {
+    font: 400 12.5px/1 var(--font-mono);
+    color: var(--color-dark-muted);
+    opacity: 0;
+    animation:
+      intro-fade 0.6s ease 0.8s forwards,
+      intro-fadeout 0.3s ease 1.75s forwards;
+  }
+  @keyframes intro-up {
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes intro-away {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-108%);
+    }
+  }
+  @keyframes intro-fade {
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes intro-fadeout {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes intro-drop {
+    to {
+      transform: translateY(101%);
+    }
+  }
+}
+
+/* Entrée du hero : retardée pendant le rideau */
+@layer components {
+  .rise {
+    animation: rise 0.8s var(--ease-pulse) both;
+    animation-delay: var(--rise-delay, 0s);
+  }
+  html:not([data-intro]) .hero-rise,
+  html[data-intro='play'] .hero-rise {
+    animation-delay: calc(var(--rise-delay, 0s) + var(--intro-offset, 0s));
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+  }
+}
+
+/* SplitHeading : masqué tant que GSAP n’a pas découpé le titre (seulement si JS actif) */
+@media (scripting: enabled) {
+  html:not([data-motion='reduce']) [data-split='pending'],
+  html:not([data-motion='reduce']) [data-draw='pending'] {
+    visibility: hidden;
+  }
+}
+
+/* ───────────── Animations décoratives en boucle ───────────── */
+@layer components {
+  .loop-pulse {
+    animation: loop-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes loop-pulse {
+    50% {
+      opacity: 0.45;
+    }
+  }
+  .slide-in {
+    animation: slide-in 0.7s var(--ease-pulse) both;
+  }
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+  }
+  .ecg-track {
+    animation: ecg 6s linear infinite;
+  }
+  @keyframes ecg {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .story-prog {
+    animation: story-prog var(--story-dur, 5s) linear both;
+  }
+  .story-prog.paused {
+    animation-play-state: paused;
+  }
+  @keyframes story-prog {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none !important;
+  }
+  .rise,
+  .loop-pulse,
+  .slide-in,
+  .ecg-track,
+  .story-prog {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Mots découpés par SplitText */
+.split-w {
+  will-change: transform;
+}
+
+/* Spotlight : halo rouge très léger qui suit la souris + bordure qui s’éclaire près du curseur */
+.spot {
+  position: relative;
+  isolation: isolate;
+}
+.spot > .spot-halo,
+.spot > .spot-edge {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-pulse);
+}
+.spot > .spot-halo {
+  z-index: -1;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--color-red) 7%, transparent),
+    transparent 65%
+  );
+}
+.spot > .spot-edge {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(
+    180px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--color-red) 55%, transparent),
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.spot:hover > .spot-halo,
+.spot:hover > .spot-edge {
+  opacity: 1;
+}
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .spot > .spot-halo,
+  .spot > .spot-edge {
+    display: none;
+  }
 }
