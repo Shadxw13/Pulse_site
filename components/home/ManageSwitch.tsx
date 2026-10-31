@@ -1,17 +1,18 @@
 'use client';
 
 import { AnimatePresence, m } from 'motion/react';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitHeading } from '@/components/motion/SplitHeading';
 import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
-import { LogoMark } from '@/components/ui/Logo';
 import { site } from '@/content/site';
 import { cn } from '@/lib/cn';
 import { DUR, EASE } from '@/lib/motion';
-import { tiles } from '@/lib/palette';
 import { useIsMobile, useReducedMotion } from '@/lib/useReducedMotion';
+import street from '@/assets/game/street.jpg';
+import panelLogin from '@/assets/game/panel-login.webp';
 
 const MODES = [
   {
@@ -38,121 +39,59 @@ const MODES = [
   },
 ] as const;
 
-const TILE_ICONS = {
-  Serveur: (
-    <svg
-      viewBox="0 0 100 100"
-      className="absolute top-[18px] -right-3.5 w-[90px] opacity-[.22]"
-      aria-hidden="true"
-    >
-      <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="10" />
-      <circle cx="50" cy="50" r="14" fill="currentColor" />
-    </svg>
-  ),
-  Staff: (
-    <svg
-      viewBox="0 0 100 100"
-      className="absolute top-[18px] -right-2.5 w-[86px] opacity-[.22]"
-      aria-hidden="true"
-    >
-      <circle cx="50" cy="34" r="20" fill="currentColor" />
-      <path d="M14 96 C14 66 86 66 86 96Z" fill="currentColor" />
-    </svg>
-  ),
-  Monde: (
-    <svg viewBox="0 0 100 100" className="absolute top-4 -right-3 w-[90px] opacity-[.22]" aria-hidden="true">
-      <path d="M10 70 L40 30 L58 54 L70 40 L94 70Z" fill="currentColor" />
-      <circle cx="74" cy="22" r="10" fill="currentColor" />
-    </svg>
-  ),
-  Illégal: (
-    <svg
-      viewBox="0 0 100 100"
-      className="absolute top-[18px] -right-2.5 w-[86px] opacity-[.22]"
-      aria-hidden="true"
-    >
-      <path d="M50 8 L88 24 V52 C88 74 70 90 50 96 C30 90 12 74 12 52 V24Z" fill="currentColor" />
-    </svg>
-  ),
-};
-
-const TABLET_TILES: Array<[keyof typeof TILE_ICONS, readonly [string, string], string]> = [
-  ['Serveur', tiles.rouge, 'Réglages, annonces, ressources'],
-  ['Staff', tiles.ardoise, 'Joueurs, sanctions, reports'],
-  ['Monde', tiles.sauge, 'Météo, heure, zones'],
-  ['Illégal', tiles.graphite, 'Territoires, trafics'],
-];
-
+/** Tablette en jeu : capture GTA V sur fond « Miami », la commande /gestion tapée dans le chat. */
 function TabletScreen() {
   return (
-    <div className="flex h-full flex-col gap-3.5 bg-linear-180 from-dark-top to-dark-bottom p-[18px]">
-      <div className="flex items-center justify-between text-dark-text">
-        <span className="display flex items-center gap-2 text-base font-bold">
-          <LogoMark width={22} height={13} onDark />
-          Pulse Gestion
-        </span>
-        <span className="mono text-xs text-dark-muted">/gestion · Admin_Kev</span>
-      </div>
-      <div className="grid flex-1 grid-cols-4 gap-2.5">
-        {TABLET_TILES.map(([label, [a, b], small]) => (
-          <div key={label} className="tc" style={{ background: `linear-gradient(165deg, ${a}, ${b})` }}>
-            {TILE_ICONS[label]}
-            <b>{label}</b>
-            <small>{small}</small>
-          </div>
-        ))}
+    <div className="relative h-full overflow-hidden bg-dark-deep font-bai text-white">
+      <Image
+        src={street}
+        alt=""
+        fill
+        sizes="(max-width: 860px) 100vw, 560px"
+        className="ken-burns object-cover"
+      />
+      <div
+        className="absolute inset-0 mix-blend-soft-light"
+        style={{
+          background:
+            'linear-gradient(135deg, rgba(255,79,139,.9) 0%, rgba(255,170,70,.75) 45%, rgba(25,195,195,.85) 100%)',
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      <div
+        className="absolute bottom-[7%] left-[5%] flex items-center gap-2 px-3 py-2 text-[15px] font-semibold"
+        style={{ background: 'linear-gradient(90deg,#0000008c,#00000062)', borderRadius: 2 }}
+      >
+        <span className="text-white/55">›</span>
+        <span className="type-cmd">/gestion</span>
+        <i className="caret h-[1.1em] w-[2px] bg-white" />
       </div>
     </div>
   );
 }
 
+/** Espace client : la vraie page de connexion du panel, en ligne. */
 function BrowserScreen() {
-  const rows = [
-    ['Taxe sur les ventes', 'Appliquée aux entreprises', '8 %'],
-    ['Salaire de base', 'Toutes les 15 minutes', '250 $'],
-    ['Revenu par territoire', 'Par heure de contrôle', '2 400 $'],
-  ];
   return (
     <div className="flex h-full flex-col bg-dark-deep">
-      <div className="flex h-[38px] items-center gap-2.5 border-b border-dark-line bg-dark-bar px-3.5">
+      <div className="flex h-[38px] flex-none items-center gap-2.5 border-b border-dark-line bg-dark-bar px-3.5">
         <span className="flex gap-1.5">
           {[0, 1, 2].map((k) => (
             <i key={k} className="size-[9px] rounded-full bg-dark-dot" />
           ))}
         </span>
         <span className="mx-auto flex h-6 max-w-[300px] flex-1 items-center justify-center rounded-md bg-dark-deep text-[11.5px] text-dark-muted">
-          Espace client Pulse
+          {site.panel.login.replace(/^https?:\/\//, '')}
         </span>
       </div>
-      <div className="grid min-h-0 flex-1 grid-cols-[minmax(0,140px)_minmax(0,1fr)] sm:grid-cols-[180px_minmax(0,1fr)]">
-        <div className="flex flex-col gap-1 border-r border-dark-line px-2.5 py-3.5 text-[12.5px] text-dark-muted">
-          {['Accueil', 'Joueurs', 'Économie', 'Territoires', 'Rôles', 'Licence'].map((l) => (
-            <span
-              key={l}
-              className={cn('px-2.5 py-[7px]', l === 'Économie' && 'rounded-[7px] bg-dark-2 text-dark-text')}
-            >
-              {l}
-            </span>
-          ))}
-        </div>
-        <div className="flex min-w-0 flex-col gap-[9px] p-4 text-dark-text">
-          <b className="display text-[17px] font-bold">Économie &amp; taxes</b>
-          {rows.map(([a, b, c]) => (
-            <div key={a} className="ui-r !px-3 !py-2.5 text-[12.5px]">
-              <span>
-                {a}
-                <br />
-                <span className="text-[11px] text-dark-muted">{b}</span>
-              </span>
-              <span className="mono">{c}</span>
-            </div>
-          ))}
-          <div className="flex justify-end">
-            <span className="rounded-[7px] bg-red px-3 py-[7px] text-xs font-semibold text-white">
-              Enregistrer
-            </span>
-          </div>
-        </div>
+      <div className="relative min-h-0 flex-1 overflow-hidden">
+        <Image
+          src={panelLogin}
+          alt=""
+          fill
+          sizes="(max-width: 860px) 100vw, 760px"
+          className="ken-burns object-cover object-left"
+        />
       </div>
     </div>
   );

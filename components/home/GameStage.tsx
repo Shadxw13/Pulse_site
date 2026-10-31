@@ -89,7 +89,6 @@ export function GameStage() {
               alt=""
               fill
               priority
-              placeholder="blur"
               sizes="(max-width: 860px) 100vw, 960px"
               className="object-cover"
             />

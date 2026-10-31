@@ -175,6 +175,7 @@ export function EveningStory() {
                 <div
                   key={mo.hour}
                   aria-hidden={i !== hour}
+                  inert={i !== hour}
                   className="absolute inset-0 flex items-center justify-center p-[clamp(14px,3vw,32px)]"
                   style={{
                     opacity: i === hour ? 1 : 0,

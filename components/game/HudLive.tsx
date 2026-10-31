@@ -129,21 +129,16 @@ export function HudSpeedometer({ paused = false }: { paused?: boolean }) {
   const [speed, setSpeed] = useState(87);
   useEffect(() => {
     if (prefersReducedMotion() || paused) return;
-    let raf = 0;
     let cur = 87;
     let target = 87;
-    let last = 0;
-    const tick = (t: number) => {
-      if (t - last > 1800) {
-        last = t;
-        target = 38 + Math.round(Math.random() * 84);
-      }
-      cur += (target - cur) * 0.035;
+    let n = 0;
+    // ~12 images/s suffisent pour un compteur, et laissent le fil principal libre.
+    const id = setInterval(() => {
+      if (n++ % 22 === 0) target = 38 + Math.round(Math.random() * 84);
+      cur += (target - cur) * 0.12;
       setSpeed(Math.round(cur));
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    }, 80);
+    return () => clearInterval(id);
   }, [paused]);
 
   const digits = String(speed).padStart(3, '0').split('');

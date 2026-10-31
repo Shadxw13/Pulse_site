@@ -25,14 +25,29 @@ export function GameVideo({
   const [inView, setInView] = useState(false);
   const [reduce, setReduce] = useState(false);
   const [playing, setPlaying] = useState(false);
+  // L’affiche n’est chargée qu’à l’approche de l’écran, pour ne pas concurrencer le hero.
+  const [near, setNear] = useState(false);
 
   useEffect(() => {
     setReduce(prefersReducedMotion());
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.35 });
+    const pre = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setNear(true);
+          pre.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' },
+    );
     io.observe(el);
-    return () => io.disconnect();
+    pre.observe(el);
+    return () => {
+      io.disconnect();
+      pre.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -55,7 +70,7 @@ export function GameVideo({
         loop
         playsInline
         preload="none"
-        poster={`/game/${name}.jpg`}
+        poster={near ? `/game/${name}.jpg` : undefined}
         aria-label={label}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}

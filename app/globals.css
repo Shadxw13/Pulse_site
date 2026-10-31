@@ -544,3 +544,59 @@ html[data-intro='play'] .split-intro .sw-i {
     animation-duration: 0.15s;
   }
 }
+
+/* Gestion : lent travelling sur les captures, commande tapée */
+@keyframes ken-burns {
+  from {
+    transform: scale(1.04) translate(0, 0);
+  }
+  to {
+    transform: scale(1.12) translate(-2%, -1.5%);
+  }
+}
+.ken-burns {
+  animation: ken-burns 14s ease-in-out infinite alternate;
+}
+@keyframes type-cmd {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  60%,
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.type-cmd {
+  animation: type-cmd 2.6s steps(8, end) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret 1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns,
+  .type-cmd,
+  .caret {
+    animation: none;
+  }
+}
+@keyframes banner-pan {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.1) translateX(-2%);
+  }
+}
+.banner-pan {
+  animation: banner-pan 10s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .banner-pan {
+    animation: none;
+  }
+}

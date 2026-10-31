@@ -4,9 +4,11 @@ import { SplitHeading } from '@/components/motion/SplitHeading';
 import { Button } from '@/components/ui/Button';
 import { CopyCommand } from '@/components/ui/CopyCommand';
 import { Eyebrow } from '@/components/ui/Eyebrow';
-import { LOGO_PATH } from '@/components/ui/Logo';
 import { site } from '@/content/site';
 import { discordMock as d } from '@/lib/palette';
+import Image from 'next/image';
+import banner from '@/assets/brand/discord-banner.webp';
+import symbol from '@/assets/brand/symbol.webp';
 
 export const metadata: Metadata = {
   title: 'Discord et serveur de test',
@@ -28,31 +30,15 @@ function ServerCard() {
       className="w-full max-w-[500px] overflow-hidden rounded-[14px] shadow-float"
       style={{ background: d.card }}
     >
-      <div className="relative h-24" style={{ background: d.banner }}>
-        <svg
-          width="120"
-          height="70"
-          viewBox="240 350 560 324"
-          className="absolute right-[18px] bottom-3 opacity-[.22]"
-          aria-hidden="true"
-        >
-          <path fill="currentColor" d={LOGO_PATH} />
-        </svg>
+      <div className="relative aspect-[4/1] overflow-hidden">
+        <Image src={banner} alt="" fill priority sizes="500px" className="banner-pan object-cover" />
       </div>
       <div className="relative px-5 pb-5">
         <div
           className="-mt-9 flex size-[72px] items-center justify-center rounded-[14px] border-[5px]"
           style={{ background: d.icon, borderColor: d.card }}
         >
-          <svg
-            width="38"
-            height="22"
-            viewBox="240 350 560 324"
-            aria-hidden="true"
-            className="fill-red-on-dark"
-          >
-            <path d={LOGO_PATH} />
-          </svg>
+          <Image src={symbol} alt="" width={44} height={44} />
         </div>
         <div className="flex flex-col gap-1.5 pt-3">
           <span className="text-xl font-bold" style={{ color: d.title }}>
